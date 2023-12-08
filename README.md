@@ -3,6 +3,7 @@
 GraphiQL is a playground/IDE for graphQL requests. GraphiQL is an open-source tool that include: authorization and authentication capabilities, ensuring access to the tool is restricted to authorized users; work with a user-specified open GraphQL endpoint.
 
 ## Application structure
+
 Your app must contain:
 
 1. Welcome page
@@ -15,7 +16,7 @@ Your app must contain:
    - response section (query editor / JSON viewer)
    - possibility to change to a different user-specified API endpoint
 
-------
+---
 
 ![screenshot will be add later](-)
 
@@ -26,6 +27,7 @@ Deploy: <(will be add later)>
 ## Tech Stack
 
 (will be add later)
+
 - [React](https://react.dev)
 - [React Router](https://reactrouter.com)
 - [Redux Toolkit & RTK Query](https://redux-toolkit.js.org)
@@ -67,7 +69,6 @@ npm run lint:fix
 ```
 
 Automatically fix all auto-fixable errors & warnings with `ESLint`
-
 
 ```sh
 npm run typecheck
