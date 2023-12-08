@@ -9,7 +9,7 @@ import LoginPage from '../pages/LoginPage';
 import Page404 from '../pages/Page404';
 import GraphQl from '../pages/GraphQlPage';
 import PrivateRoute from './PrivateRoute';
-import { ROUTE_PATH } from '../constants';
+import { ROUTE_PATH } from '../utils/constants';
 
 export const route = createBrowserRouter(
   createRoutesFromElements(

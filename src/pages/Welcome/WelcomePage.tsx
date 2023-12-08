@@ -2,7 +2,8 @@ import { useAppSelector } from '../../redux/hook';
 import { RootState } from '../../redux/store';
 import { useDispatch } from 'react-redux';
 import { setToken } from '../../redux/slices/isTokenSlice';
-import Navigate from './Navigate';
+import RSS from './RSS';
+import Header from '../../components/Header/Header';
 
 const WelcomePage = () => {
   const dispatch = useDispatch();
@@ -12,18 +13,16 @@ const WelcomePage = () => {
     dispatch(setToken(!isToken));
   };
   return (
-    <>
-      <header>
-        <p>header</p>
-        <Navigate />
-      </header>
+    <div className="container">
+      <Header />
       <main>
         <p>Main</p>
         <button onClick={handlerClick}>change isToken</button>
         <p>IsToken: {isToken ? 'true' : 'false'}</p>
+        <RSS />
       </main>
       <footer>footer</footer>
-    </>
+    </div>
   );
 };
 

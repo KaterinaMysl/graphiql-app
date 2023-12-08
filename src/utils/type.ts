@@ -11,3 +11,13 @@ export type ErrorBoundaryState = {
 export type PropsPrivateRoute = {
   allowUnauthorizedAccess: boolean;
 };
+
+export type PropsAboutTeam = {
+  data: AboutTeam;
+};
+
+export type AboutTeam = {
+  id: number;
+  name: string;
+  position: string;
+};

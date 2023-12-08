@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAppSelector } from '../../redux/hook';
 import { RootState } from '../../redux/store';
-import { ROUTE_PATH, LINK_NAME } from '../../constants';
+import { ROUTE_PATH, LINK_NAME } from '../../utils/constants';
 
 const Navigate = () => {
   const { isToken } = useAppSelector((state: RootState) => state.isTokenSlice);
