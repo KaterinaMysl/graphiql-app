@@ -1,4 +1,4 @@
-import { AboutTeam } from './type';
+import { AboutTeam } from './types';
 
 export const ROUTE_PATH = {
   welcome: '/',

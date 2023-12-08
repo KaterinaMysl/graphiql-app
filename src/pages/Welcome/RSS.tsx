@@ -1,7 +1,9 @@
-import styles from './RSS.module.css';
 import { Link } from 'react-router-dom';
-import rss from '../../assets/img/svg/rs_school.svg';
+
 import { RSS_CONTENT } from '../../utils/constants';
+import rss from '../../assets/img/svg/rs_school.svg';
+
+import styles from './RSS.module.css';
 
 const RSS = () => {
   return (

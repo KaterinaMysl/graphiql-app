@@ -1,49 +1,29 @@
-.rss{
-  background: #f3f6f9;
-  padding: 50px 0;
-  text-align: center;
-}
-
-.container{
+.container {
+  display: flex;
   max-width: 960px;
   margin: 0 auto;
-  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.logo{
+.rss {
+  padding: 50px 0;
+  background: #f3f6f9;
+  text-align: center;
+}
+
+.logo {
   position: relative;
   animation: rotateLogo 6s infinite linear;
 }
 
-.rss a{
-  background: #fa9e1b;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  transition: all 0.3s ease-in-out;
-}
-.rss a:hover img {
-  transform: rotate(360deg);
-}
-
-.rss img{
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  vertical-align: middle;
-  border-style: none;
-  transition: all 0.3s ease-in-out;
-}
-
-.content{
+.content {
   text-align: center;
   color: #333;
   padding: 20px;
 }
 
-.content h3{
+.content h3 {
   font-size: 30px;
   margin-bottom: 10px;
   color: #333;
@@ -51,11 +31,32 @@
   text-transform: uppercase;
 }
 
-.content p{
+.content p {
   font-size: 18px;
   line-height: 2;
   margin-bottom: 20px;
   color: #555;
+}
+
+.rss a {
+  padding: 10px 20px;
+  background: #fa9e1b;
+  border-radius: 5px;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.rss a:hover img {
+  transform: rotate(360deg);
+}
+
+.rss img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border-style: none;
+  transition: all 0.3s ease-in-out;
 }
 
 @keyframes rotateLogo {

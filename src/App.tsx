@@ -1,9 +1,12 @@
-import './App.css';
-import { setupStore } from './redux/store';
 import { Provider } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
+
+import { setupStore } from './redux/store';
 import { route } from './router/Route';
+
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
+
+import './App.css';
 
 const store = setupStore();
 
