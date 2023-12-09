@@ -1,21 +1,25 @@
 import { Link } from 'react-router-dom';
 
-import { useAppDispatch, useAppSelector } from '../../redux/hook';
-import { RootState } from '../../redux/store';
-import { ROUTE_PATH, LINK_NAME } from '../../utils/constants';
-import { auth, logout } from '../../services/firebase';
-import { setToken } from '../../redux/slices/isTokenSlice';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import { useAppDispatch } from '../../redux/hook';
+import { unsetToken } from '../../redux/slices/tokenSlice';
+import {
+  ROUTE_PATH,
+  LINK_NAME,
+  TOKEN_TITLE,
+  emptyToken,
+} from '../../utils/constants';
+import { logout } from '../../services/firebase';
+import useToken from '../../hooks/useToken';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const Navigate = () => {
-  const { isToken } = useAppSelector((state: RootState) => state.isTokenSlice);
-  const [user] = useAuthState(auth);
   const dispatch = useAppDispatch();
-
-  console.log('us=', user);
+  const isToken = useToken(false);
+  const [setValue] = useLocalStorage(TOKEN_TITLE, emptyToken);
 
   const handleLogout = () => {
-    dispatch(setToken(false));
+    dispatch(unsetToken());
+    setValue(emptyToken);
     logout();
   };
 

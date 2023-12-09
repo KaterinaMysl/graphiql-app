@@ -4,8 +4,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { auth } from '../../services/firebase';
 import { useAppDispatch } from '../../redux/hook';
-import { setToken } from '../../redux/slices/isTokenSlice';
-import { ROUTE_PATH } from '../../utils/constants';
+import { setToken } from '../../redux/slices/tokenSlice';
+import { ROUTE_PATH, TOKEN_TITLE, emptyToken } from '../../utils/constants';
+import { Token } from '../../utils/types';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+
 import { MainLayout } from '../../Layouts/Main/Main';
 
 const AuthPage = () => {
@@ -13,18 +16,24 @@ const AuthPage = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [setValue] = useLocalStorage<Token>(TOKEN_TITLE, emptyToken);
 
   useEffect(() => {
-    console.log('us=', user);
-
     if (loading) {
       return;
     }
 
-    if (user) {
-      dispatch(setToken(true));
-      navigate(ROUTE_PATH.graphQl);
-    }
+    (async () => {
+      if (user) {
+        const { token, expirationTime } = await user.getIdTokenResult();
+
+        const currToken = { accessToken: token, expirationTime };
+        dispatch(setToken(currToken));
+        setValue(currToken);
+
+        navigate(ROUTE_PATH.graphQl);
+      }
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, loading]);
 

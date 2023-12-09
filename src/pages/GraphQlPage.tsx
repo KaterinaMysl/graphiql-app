@@ -1,5 +1,11 @@
+import { MainLayout } from '../Layouts/Main/Main';
+
 const GraphQlPage = () => {
-  return <div>GraphiQl Page</div>;
+  return (
+    <MainLayout>
+      <div>GraphiQl Page</div>;
+    </MainLayout>
+  );
 };
 
 export default GraphQlPage;

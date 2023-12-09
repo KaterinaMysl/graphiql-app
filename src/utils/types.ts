@@ -9,3 +9,8 @@ export interface AboutTeam {
 export interface ChildrenProps {
   children: ReactNode;
 }
+
+export type Token = {
+  accessToken: string;
+  expirationTime: string;
+};

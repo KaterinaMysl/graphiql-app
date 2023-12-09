@@ -43,7 +43,7 @@ const signInWithGoogle = async () => {
       });
     }
   } catch (err) {
-    // change to redux state error
+    //TODO change to redux state error
     if (err instanceof Error) {
       alert(err.message);
       throw new Error(err.message);
@@ -55,7 +55,7 @@ const sigInWithEmailAndPassword = async (email: string, password: string) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
-    // change to redux state error
+    //TODO change to redux state error
     if (err instanceof Error) {
       alert(err.message);
       throw new Error(err.message);
@@ -78,7 +78,7 @@ const registerWithEmailAndPassword = async (
       email,
     });
   } catch (err: unknown) {
-    // change to redux state error
+    //TODO change to redux state error
     if (err instanceof Error) {
       alert(err.message);
       throw new Error(err.message);
@@ -90,9 +90,9 @@ const sendPasswordReset = async (email: string) => {
   try {
     await sendPasswordResetEmail(auth, email);
     alert('Password reset link sent!');
-    // change to redux state and redirect to main
+    //TODO change to redux state and redirect to main
   } catch (err) {
-    // change to redux state error
+    //TODO change to redux state error
     if (err instanceof Error) {
       alert(err.message);
       throw new Error(err.message);

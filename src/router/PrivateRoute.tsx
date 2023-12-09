@@ -1,15 +1,13 @@
 import { Outlet, Navigate } from 'react-router-dom';
-
-import { useAppSelector } from '../redux/hook';
-import { RootState } from '../redux/store';
 import { ROUTE_PATH } from '../utils/constants';
+import useToken from '../hooks/useToken';
 
 type PropsPrivateRoute = {
   allowUnauthorizedAccess: boolean;
 };
 
 const PrivateRoute = ({ allowUnauthorizedAccess }: PropsPrivateRoute) => {
-  const { isToken } = useAppSelector((state: RootState) => state.isTokenSlice);
+  const isToken = useToken(true);
 
   return (
     <>
