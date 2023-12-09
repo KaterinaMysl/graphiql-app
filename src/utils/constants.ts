@@ -3,8 +3,10 @@ import { AboutTeam } from './types';
 export const ROUTE_PATH = {
   welcome: '/',
   graphQl: '/graphQL',
-  login: '/login',
-  registration: '/login',
+  auth: '/auth',
+  login: 'signin',
+  registration: 'signup',
+  reset: 'reset',
   page404: '*',
 };
 
