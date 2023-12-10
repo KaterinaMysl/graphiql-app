@@ -18,6 +18,11 @@ const SignIn = () => {
     sigInWithEmailAndPassword(email, password);
   };
 
+  const handleSignInWithGoogle = (e: FormEvent) => {
+    e.preventDefault();
+    signInWithGoogle();
+  };
+
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <input
@@ -33,7 +38,7 @@ const SignIn = () => {
         placeholder="Password"
       />
       <button type="submit">Sign In</button>
-      <button className={styles.google__btn} onClick={signInWithGoogle}>
+      <button className={styles.google__btn} onClick={handleSignInWithGoogle}>
         Sign In with Google
       </button>
       <div>
