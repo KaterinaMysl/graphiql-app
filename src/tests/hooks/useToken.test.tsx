@@ -1,15 +1,16 @@
+import { PropsWithChildren } from 'react';
+import { Provider } from 'react-redux';
 import { expect, describe, test } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { Provider } from 'react-redux';
+
 import useToken from '../../hooks/useToken';
+import { setupStore } from '../../redux/store';
+import { setToken } from '../../redux/slices/tokenSlice';
 import {
   fakeExpiredToken,
   fakeNotExpiredToken,
   fakeUnvalidToken,
 } from '../Mocks';
-import { PropsWithChildren } from 'react';
-import { setupStore } from '../../redux/store';
-import { setToken } from '../../redux/slices/tokenSlice';
 
 const store = setupStore();
 
