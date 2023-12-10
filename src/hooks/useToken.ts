@@ -3,7 +3,7 @@ import { useAppSelector } from '../redux/hook';
 import { RootState } from '../redux/store';
 import { isTokenNotExpired, isTokenValid } from '../utils/helpers';
 
-const useToken = (initialIsToken: boolean) => {
+const useToken = (initialIsToken: boolean = false) => {
   const [isToken, setIsToken] = useState(initialIsToken);
 
   const { accessToken, expirationTime } = useAppSelector(

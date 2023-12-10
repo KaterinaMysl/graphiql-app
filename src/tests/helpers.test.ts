@@ -1,6 +1,10 @@
 import { expect, describe, test } from 'vitest';
 import { isTokenNotExpired, isTokenValid } from '../utils/helpers';
-import { fakeAccessToken, fakeTokenExpiredTime } from './Mocks';
+import {
+  fakeAccessToken,
+  fakeTokenExpiredTime,
+  tokenNotExpiredTime,
+} from './Mocks';
 
 describe('Helpers functions', () => {
   test('isTokenNotExpired should return false if token expired', () => {
@@ -9,7 +13,6 @@ describe('Helpers functions', () => {
   });
 
   test('isTokenNotExpired should return true if token not expired', () => {
-    const tokenNotExpiredTime = new Date(Date.now() + 60 * 60);
     const isNotExpired = isTokenNotExpired(tokenNotExpiredTime.toString());
     expect(isNotExpired).toBeTruthy();
   });

@@ -5,7 +5,7 @@ import tokenReducer, {
 } from '../../redux/slices/tokenSlice';
 import { emptyToken } from '../../utils/constants';
 import { Token } from '../../utils/types';
-import { fakeToken } from '../Mocks';
+import { fakeExpiredToken } from '../Mocks';
 
 const state: Token = {
   accessToken: '',
@@ -25,14 +25,14 @@ describe('Token reduce slice', () => {
   test('should handle setToken', () => {
     const initialState: Token = state;
 
-    const action = setToken(fakeToken);
-    const expectedState: Token = { ...state, ...fakeToken };
+    const action = setToken(fakeExpiredToken);
+    const expectedState: Token = { ...state, ...fakeExpiredToken };
 
     expect(tokenReducer(initialState, action)).toEqual(expectedState);
   });
 
   test('should unset Token values', () => {
-    const initialState: Token = { ...state, ...fakeToken };
+    const initialState: Token = { ...state, ...fakeExpiredToken };
 
     const action = unsetToken();
     const expectedState: Token = { ...state };

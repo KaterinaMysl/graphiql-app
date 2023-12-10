@@ -2,8 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f3f6f9;
   padding: 10px;
+  background: #f3f6f9;
 }
 
 .logo {
@@ -12,8 +12,8 @@
 }
 
 .logo img {
-  border-radius: 10px;
   width: 100px;
+  border-radius: 10px;
 }
 
 .logo h2 {

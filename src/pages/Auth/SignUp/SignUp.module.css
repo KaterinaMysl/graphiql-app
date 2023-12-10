@@ -1,8 +1,8 @@
 .form {
-  width: 250px;
-  margin: 40px auto;
   display: flex;
   flex-direction: column;
+  width: 250px;
+  margin: 40px auto;
   padding: 30px;
   background-color: #dcdcdc;
   text-align: center;
