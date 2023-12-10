@@ -9,14 +9,12 @@ import { ROUTE_PATH, TOKEN_TITLE, emptyToken } from '../../utils/constants';
 import { Token } from '../../utils/types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
-import { MainLayout } from '../../Layouts/Main/Main';
-
 const AuthPage = () => {
   const outlet = useOutlet();
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [setValue] = useLocalStorage<Token>(TOKEN_TITLE, emptyToken);
+  const [, setValue] = useLocalStorage<Token>(TOKEN_TITLE, emptyToken);
 
   useEffect(() => {
     if (loading) {
@@ -37,7 +35,7 @@ const AuthPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, loading]);
 
-  return <MainLayout>{outlet}</MainLayout>;
+  return <>{outlet}</>;
 };
 
 export default AuthPage;

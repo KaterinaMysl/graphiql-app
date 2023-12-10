@@ -1,14 +1,16 @@
-import { ChildrenProps } from '../../utils/types';
+import { Outlet } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import Header from '../Header/Header';
 
 import styles from './Main.module.css';
 
-const Main = ({ children }: ChildrenProps) => {
+const Main = () => {
   return (
     <>
       <Header />
-      <main className={styles.main}> {children}</main>
+      <main className={styles.main}>
+        <Outlet />
+      </main>
       <Footer />
     </>
   );

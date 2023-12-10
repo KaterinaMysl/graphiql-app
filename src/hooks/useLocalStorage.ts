@@ -1,7 +1,12 @@
 import { useState } from 'react';
 
-export function useLocalStorage<T>(keyName: string, defaultValue: T) {
-  const [storedValue, setStoredValue] = useState(() => {
+type LocalStorageHook<T> = [T, (newValue: T) => void];
+
+export function useLocalStorage<T>(
+  keyName: string,
+  defaultValue: T
+): LocalStorageHook<T> {
+  const [storedValue, setStoredValue] = useState<T>(() => {
     try {
       const value = window.localStorage.getItem(keyName);
       if (value) {
@@ -27,5 +32,5 @@ export function useLocalStorage<T>(keyName: string, defaultValue: T) {
     setStoredValue(newValue);
   };
 
-  return [storedValue, setValue];
+  return [storedValue, setValue] as const;
 }

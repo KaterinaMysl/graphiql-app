@@ -42,10 +42,10 @@ const SignIn = () => {
         </Link>
       </div>
       <div>
-        Do not have an account?{' '}
+        Do not have an account?
         <Link to={`${ROUTE_PATH.auth}/${ROUTE_PATH.registration}`}>
           {LINK_NAME.registration}
-        </Link>{' '}
+        </Link>
         now.
       </div>
     </form>

@@ -13,12 +13,14 @@ import SignIn from '../pages/Auth/SignIn/SignIn';
 import SignUp from '../pages/Auth/SignUp/SignUp';
 import ResetPage from '../pages/Auth/Reset/Reset';
 
+import { MainLayout } from '../Layouts/Main/Main';
+
 import PrivateRoute from './PrivateRoute';
 import { ROUTE_PATH } from '../utils/constants';
 
 export const route = createBrowserRouter(
   createRoutesFromElements(
-    <Route errorElement={<ErrorPage />}>
+    <Route element={<MainLayout />} errorElement={<ErrorPage />}>
       <Route path={ROUTE_PATH.welcome} element={<WelcomePage />} />
       <Route element={<PrivateRoute allowUnauthorizedAccess={true} />}>
         <Route path={ROUTE_PATH.graphQl} element={<GraphQl />} />

@@ -11,11 +11,12 @@ import {
 import { logout } from '../../services/firebase';
 import useToken from '../../hooks/useToken';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { Token } from '../../utils/types';
 
 const Navigate = () => {
   const dispatch = useAppDispatch();
   const isToken = useToken(false);
-  const [setValue] = useLocalStorage(TOKEN_TITLE, emptyToken);
+  const [, setValue] = useLocalStorage<Token>(TOKEN_TITLE, emptyToken);
 
   const handleLogout = () => {
     dispatch(unsetToken());
