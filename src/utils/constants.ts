@@ -1,10 +1,12 @@
-import { AboutTeam } from './types';
+import { AboutTeam, Token } from './types';
 
 export const ROUTE_PATH = {
   welcome: '/',
   graphQl: '/graphQL',
-  login: '/login',
-  registration: '/login',
+  auth: '/auth',
+  login: 'signin',
+  registration: 'signup',
+  reset: 'reset',
   page404: '*',
 };
 
@@ -12,6 +14,12 @@ export const LINK_NAME = {
   graphQl: 'GraphQl',
   login: 'Sign In',
   registration: 'Sign Up',
+};
+
+export const TOKEN_TITLE = 'PIX_token';
+export const emptyToken: Token = {
+  accessToken: '',
+  expirationTime: '',
 };
 
 export const HEADER = {

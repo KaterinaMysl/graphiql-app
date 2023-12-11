@@ -6,3 +6,12 @@ body {
 a {
   text-decoration: none;
 }
+
+button {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+}

@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #dcdcdc;
+  text-align: center;
+}
+
+.form input {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.form a {
+  color: #4285f4;
+}
+
+.form .google__btn {
+  background-color: #4285f4;
+}

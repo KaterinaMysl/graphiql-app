@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
-import Navigate from '../../pages/Welcome/Navigate';
 import { HEADER } from '../../utils/constants';
+import Navigate from '../../pages/Welcome/Navigate';
 
 import styles from './Header.module.css';
 
