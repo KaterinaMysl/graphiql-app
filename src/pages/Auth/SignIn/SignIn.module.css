@@ -1,16 +1,19 @@
 .form {
   display: flex;
   flex-direction: column;
+
   width: 250px;
   margin: 40px auto;
   padding: 30px;
-  background-color: #dcdcdc;
+
   text-align: center;
+
+  background-color: #dcdcdc;
 }
 
 .form input {
-  padding: 10px;
   margin-bottom: 10px;
+  padding: 10px;
   font-size: 18px;
 }
 

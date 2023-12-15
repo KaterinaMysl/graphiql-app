@@ -12,6 +12,7 @@ import { logout } from '../../services/firebase';
 import useToken from '../../hooks/useToken';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Token } from '../../utils/types';
+import styles from './Navigate.module.css';
 
 const Navigate = () => {
   const dispatch = useAppDispatch();
@@ -25,7 +26,7 @@ const Navigate = () => {
   };
 
   return (
-    <nav>
+    <nav className={styles.nav}>
       {isToken ? (
         <>
           <Link to={ROUTE_PATH.graphQl}>{LINK_NAME.graphQl}</Link>
@@ -35,11 +36,17 @@ const Navigate = () => {
         </>
       ) : (
         <>
-          <Link to={`${ROUTE_PATH.auth}/${ROUTE_PATH.login}`}>
+          <Link
+            to={`${ROUTE_PATH.auth}/${ROUTE_PATH.login}`}
+            data-item={LINK_NAME.login}
+          >
             {LINK_NAME.login}
           </Link>
           <span>/</span>
-          <Link to={`${ROUTE_PATH.auth}/${ROUTE_PATH.registration}`}>
+          <Link
+            to={`${ROUTE_PATH.auth}/${ROUTE_PATH.registration}`}
+            data-item={LINK_NAME.registration}
+          >
             {LINK_NAME.registration}
           </Link>
         </>

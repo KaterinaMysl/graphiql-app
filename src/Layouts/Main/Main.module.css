@@ -1,0 +1,16 @@
+.main {
+  min-height: 80vh;
+  margin-top: 75px;
+}
+
+@media only screen and (width <= 768px) {
+  .main {
+    margin-top: 67px;
+  }
+}
+
+@media only screen and (width <= 500px) {
+  .main {
+    margin-top: 60px;
+  }
+}

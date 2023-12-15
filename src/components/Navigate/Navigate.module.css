@@ -1,0 +1,44 @@
+.nav {
+  font-size: 24px;
+  font-weight: 600;
+  color: #a4a4a4;
+}
+
+.nav a {
+  position: relative;
+  margin: 5px;
+  text-transform: uppercase;
+  transition: all .5s ease-in-out;
+}
+
+.nav a::before {
+  content: attr(data-item);
+
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  width: 0;
+
+  color: #8254ff;
+
+  transition: all .5s ease-in-out;
+}
+
+.nav a:hover::before {
+  width: 100%;
+}
+
+
+@media only screen and (width <= 768px) {
+  .nav {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (width <= 500px) {
+  .nav {
+    font-size: 14px;
+  }
+}

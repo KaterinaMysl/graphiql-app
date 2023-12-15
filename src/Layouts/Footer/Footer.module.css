@@ -1,0 +1,47 @@
+.footer {
+  background-color: rgb(246 235 220);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding: 20px;
+}
+
+.rss,
+.github {
+  width: 100px;
+  height: 40px;
+}
+
+.github {
+  width: 40px;
+}
+
+.rss img,
+.github img {
+  width: 100%;
+  transition: all .2s;
+}
+
+.rss img:hover,
+.github img:hover {
+  filter: invert(51%) sepia(80%) saturate(3693%) hue-rotate(164deg) brightness(98%) contrast(101%);
+}
+
+@media (width <= 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .rss {
+    margin-bottom: 15px;
+  }
+
+  .footer p {
+    margin-bottom: 15px;
+  }
+}
