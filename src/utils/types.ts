@@ -14,3 +14,13 @@ export type Token = {
   accessToken: string;
   expirationTime: string;
 };
+
+export interface Suggestion {
+  label: string;
+  kind: number;
+  insertText: string;
+}
+
+export interface Schema {
+  label: string;
+}
