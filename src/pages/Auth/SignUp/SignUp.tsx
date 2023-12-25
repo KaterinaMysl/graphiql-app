@@ -1,53 +1,82 @@
-import { FormEvent, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+
 import { registerWithEmailAndPassword } from '../../../services/firebase';
+
+import { checkPasswordStrength } from '../../../utils/helpers';
+import { Strength } from '../../../utils/types';
+import { AuthInfo, authInfoSchema } from '../../../validation/form.schema';
+
 import styles from './SignUp.module.css';
 
+const initialAuthInfo: AuthInfo = {
+  name: '',
+  password: '',
+  confirmPassword: '',
+  email: '',
+};
+
 const SignUp = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [passwordStrength, setPasswordStrength] = useState(Strength.poor);
 
-  const handleReset = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
-  };
+  const {
+    register,
+    handleSubmit,
+    reset,
+    watch,
+    formState: { errors, isValid },
+  } = useForm<AuthInfo>({
+    defaultValues: initialAuthInfo,
+    resolver: yupResolver(authInfoSchema),
+    mode: 'onChange',
+  });
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const currPassword = watch('password');
+
+  useEffect(() => {
+    const currPasswordStrength = checkPasswordStrength(currPassword);
+    setPasswordStrength(currPasswordStrength);
+  }, [currPassword]);
+
+  const handleReset = () => reset();
+
+  const onSubmitHandler: SubmitHandler<AuthInfo> = ({
+    name,
+    email,
+    password,
+  }: AuthInfo) => {
     registerWithEmailAndPassword(name, email, password);
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter name"
-      />
-      <input
-        type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-      />
+    <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
+      <input type="text" {...register('name')} placeholder="Enter name" />
+      <p>{errors.name?.message}</p>
+      <input type="text" {...register('email')} placeholder="Email" />
+      <p>{errors.email?.message}</p>
+      <input type="password" {...register('password')} placeholder="Password" />
+      <p className={styles.green}>
+        Your password strength is <strong>{passwordStrength}</strong>
+      </p>
+      <p>{errors.password?.message}</p>
       <input
         type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
+        placeholder="Confirm password"
+        {...register('confirmPassword')}
       />
-      <input type="password" placeholder="Confirm password" />
+      <p>{errors.confirmPassword?.message}</p>
       <div className={styles.buttons__container}>
         <button
           type="reset"
-          onClick={handleReset}
           className={styles.reset__btn}
+          onClick={handleReset}
         >
           Reset
         </button>
-        <button type="submit">Sign up</button>
+        <button type="submit" disabled={isValid ? false : true}>
+          Sign up
+        </button>
       </div>
     </form>
   );

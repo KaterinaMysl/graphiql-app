@@ -1,3 +1,9 @@
+import {
+  PasswordStrengthRequirements,
+  maxPasswordStrength,
+} from '../validation/constants';
+import { Strength } from './types';
+
 export const isTokenNotExpired = (expirationTime: string): boolean => {
   const time = new Date(expirationTime);
   const now = new Date();
@@ -9,4 +15,35 @@ export const isTokenNotExpired = (expirationTime: string): boolean => {
 // TODO:  if token from localstorage how to check validation
 export const isTokenValid = (token: string): boolean => {
   return token !== '';
+};
+
+export const isStringMatchPattern = (str: string, pattern: RegExp) =>
+  str.match(pattern);
+
+export const calculatePasswordStrength = (strengthCount: number) => {
+  if (strengthCount === maxPasswordStrength) {
+    return Strength.strong;
+  }
+  if (strengthCount > maxPasswordStrength / 2) {
+    return Strength.medium;
+  }
+
+  return Strength.poor;
+};
+
+export const checkPasswordStrength = (password: string) => {
+  const strengthCount = countMatchedStrengthRequirements(password);
+  const currPasswordStrength = calculatePasswordStrength(strengthCount);
+  return currPasswordStrength;
+};
+
+export const countMatchedStrengthRequirements = (password: string): number => {
+  let strengthCount = 0;
+
+  PasswordStrengthRequirements.forEach((pattern: RegExp) => {
+    if (isStringMatchPattern(password, pattern)) {
+      strengthCount += 1;
+    }
+  });
+  return strengthCount;
 };
