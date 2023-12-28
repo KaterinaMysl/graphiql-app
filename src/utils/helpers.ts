@@ -47,3 +47,8 @@ export const countMatchedStrengthRequirements = (password: string): number => {
   });
   return strengthCount;
 };
+
+export const convertUnicodeToChar = (unicodeStr: string): string => {
+  const code = parseInt(unicodeStr, 16);
+  return String.fromCharCode(code);
+};

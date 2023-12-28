@@ -2,6 +2,7 @@ import { expect, describe, test } from 'vitest';
 import {
   calculatePasswordStrength,
   checkPasswordStrength,
+  convertUnicodeToChar,
   countMatchedStrengthRequirements,
   isStringMatchPattern,
   isTokenNotExpired,
@@ -147,6 +148,16 @@ describe('Helpers functions', () => {
       for (let ind = 1; ind < maxPasswordStrength; ind += 1) {
         checkAllMatchedRequirementsNumber(ind);
       }
+    });
+  });
+
+  describe('others', () => {
+    test('should return symbol from Unicode string', () => {
+      const unicodeString = '0024';
+      const expectedSymbol = '$';
+      const symbol = convertUnicodeToChar(unicodeString);
+
+      expect(symbol).toBe(expectedSymbol);
     });
   });
 });

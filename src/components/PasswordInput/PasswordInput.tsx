@@ -2,6 +2,7 @@ import { useState, KeyboardEvent, FocusEvent } from 'react';
 import { UseControllerProps, useController } from 'react-hook-form';
 
 import styles from './PasswordInput.module.css';
+import { convertUnicodeToChar } from '../../utils/helpers';
 
 const enum keyName {
   control = 'Control',
@@ -23,11 +24,6 @@ export default function PasswordInput(props: UseControllerProps & Props) {
   const [lastInput, setLastInput] = useState('');
   const [password, setPassword] = useState('');
   const [isModDown, setIsModDown] = useState(false);
-
-  const convertUnicodeToChar = (unicodeStr: string): string => {
-    const code = parseInt(unicodeStr, 16);
-    return String.fromCharCode(code);
-  };
 
   const addCharToInput = (char: string, input: HTMLInputElement) => {
     const newPassword = `${password}${char}`;
@@ -82,19 +78,20 @@ export default function PasswordInput(props: UseControllerProps & Props) {
     }
   };
 
+  const handleControlKeyUp = () => {
+    field.onChange(password);
+    setIsModDown(false);
+    setLastInput('');
+  };
+
   const handleKeyUp = (e: KeyboardEvent) => {
     const passwordInput = e.target as HTMLInputElement;
 
     if (e.key === keyName.control) {
-      field.onChange(password);
-      passwordInput.type = passwordType.password;
-      setIsModDown(false);
-      setLastInput('');
+      handleControlKeyUp();
     }
 
-    if (e.key === keyName.alt) {
-      passwordInput.type = passwordType.password;
-    }
+    passwordInput.type = passwordType.password;
   };
 
   const handleFocus = (e: FocusEvent) => {
