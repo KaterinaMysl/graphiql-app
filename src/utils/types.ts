@@ -14,3 +14,9 @@ export type Token = {
   accessToken: string;
   expirationTime: string;
 };
+
+export enum Strength {
+  poor = 'poor',
+  medium = 'medium',
+  strong = 'strong',
+}

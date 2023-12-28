@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
@@ -8,13 +8,31 @@ import {
 import { LINK_NAME, ROUTE_PATH } from '../../../utils/constants';
 
 import styles from './SignIn.module.css';
+import PasswordInput from '../../../components/PasswordInput/PasswordInput';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
+interface SignInForm {
+  email: string;
+  password: string;
+}
+
+const initialFormValues: SignInForm = { email: '', password: '' };
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { isValid },
+  } = useForm<SignInForm>({
+    defaultValues: initialFormValues,
+    mode: 'onChange',
+  });
 
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
+  const onSubmitHandler: SubmitHandler<SignInForm> = ({
+    email,
+    password,
+  }: SignInForm) => {
     sigInWithEmailAndPassword(email, password);
   };
 
@@ -24,20 +42,12 @@ const SignIn = () => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
-      />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
-      />
-      <button type="submit">Sign In</button>
+    <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
+      <input type="text" {...register('email')} placeholder="Email" />
+      <PasswordInput control={control} name="password" placeholder="Password" />
+      <button type="submit" disabled={isValid ? false : true}>
+        Sign In
+      </button>
       <button className={styles.google__btn} onClick={handleSignInWithGoogle}>
         Sign In with Google
       </button>
