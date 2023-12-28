@@ -7,6 +7,7 @@ import { registerWithEmailAndPassword } from '../../../services/firebase';
 import { checkPasswordStrength } from '../../../utils/helpers';
 import { Strength } from '../../../utils/types';
 import { AuthInfo, authInfoSchema } from '../../../validation/form.schema';
+import PasswordInput from '../../../components/PasswordInput/PasswordInput';
 
 import styles from './SignUp.module.css';
 
@@ -25,6 +26,7 @@ const SignUp = () => {
     handleSubmit,
     reset,
     watch,
+    control,
     formState: { errors, isValid },
   } = useForm<AuthInfo>({
     defaultValues: initialAuthInfo,
@@ -55,15 +57,15 @@ const SignUp = () => {
       <p>{errors.name?.message}</p>
       <input type="text" {...register('email')} placeholder="Email" />
       <p>{errors.email?.message}</p>
-      <input type="password" {...register('password')} placeholder="Password" />
+      <PasswordInput control={control} name="password" placeholder="Password" />
       <p className={styles.green}>
         Your password strength is <strong>{passwordStrength}</strong>
       </p>
       <p>{errors.password?.message}</p>
-      <input
-        type="password"
+      <PasswordInput
+        control={control}
+        name="confirmPassword"
         placeholder="Confirm password"
-        {...register('confirmPassword')}
       />
       <p>{errors.confirmPassword?.message}</p>
       <div className={styles.buttons__container}>
