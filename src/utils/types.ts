@@ -1,10 +1,17 @@
 import { ReactNode } from 'react';
 
-export interface AboutTeam {
+export type TeamDetails = {
+  aboutMe: string;
+  location: string;
+  education: string;
+  english: string;
+  skills: string;
+  contribution: string;
+  avatar: string;
   name: string;
-  position: string;
-  id: number;
-}
+  githubIcon: string;
+  githubLink: string;
+};
 
 export interface ChildrenProps {
   children: ReactNode;
@@ -20,3 +27,12 @@ export enum Strength {
   medium = 'medium',
   strong = 'strong',
 }
+
+export type AboutTeamType = {
+  avatar: string;
+  name: string;
+  position: string;
+  id: number;
+  button: string;
+  details: TeamDetails;
+};

@@ -23,10 +23,12 @@ const Header = () => {
 
   return (
     <header className={`${styles.header} ${isSticky ? styles.sticky : ''}`}>
-      <Link to={HEADER.link} className={styles.logo}>
-        <h2 className={styles.title}>{HEADER.title}</h2>
-      </Link>
-      <Navigate />
+      <div className={styles.container}>
+        <Link to={HEADER.link} className={styles.logo}>
+          <h2 className={styles.title}>{HEADER.title}</h2>
+        </Link>
+        <Navigate />
+      </div>
     </header>
   );
 };
