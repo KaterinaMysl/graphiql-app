@@ -12,6 +12,7 @@ import { logout } from '../../services/firebase';
 import useToken from '../../hooks/useToken';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Token } from '../../utils/types';
+import styles from './Navigate.module.css';
 
 const Navigate = () => {
   const dispatch = useAppDispatch();
@@ -25,25 +26,35 @@ const Navigate = () => {
   };
 
   return (
-    <nav>
-      {isToken ? (
-        <>
-          <Link to={ROUTE_PATH.graphQl}>{LINK_NAME.graphQl}</Link>
-          <button className="logout__btn" onClick={handleLogout}>
-            Logout
-          </button>
-        </>
-      ) : (
-        <>
-          <Link to={`${ROUTE_PATH.auth}/${ROUTE_PATH.login}`}>
-            {LINK_NAME.login}
-          </Link>
-          <span>/</span>
-          <Link to={`${ROUTE_PATH.auth}/${ROUTE_PATH.registration}`}>
-            {LINK_NAME.registration}
-          </Link>
-        </>
-      )}
+    <nav className={styles.nav}>
+      <div className={`container ${styles.navContainer}`}>
+        {isToken ? (
+          <>
+            <Link to={ROUTE_PATH.graphQl} className={styles.link}>
+              {LINK_NAME.graphQl}
+            </Link>
+            <button className={styles.logoutBtn} onClick={handleLogout}>
+              Logout
+            </button>
+          </>
+        ) : (
+          <>
+            <Link
+              to={`${ROUTE_PATH.auth}/${ROUTE_PATH.login}`}
+              className={styles.link}
+            >
+              {LINK_NAME.login}
+            </Link>
+            <span className={styles.separator}>/</span>
+            <Link
+              to={`${ROUTE_PATH.auth}/${ROUTE_PATH.registration}`}
+              className={styles.link}
+            >
+              {LINK_NAME.registration}
+            </Link>
+          </>
+        )}
+      </div>
     </nav>
   );
 };

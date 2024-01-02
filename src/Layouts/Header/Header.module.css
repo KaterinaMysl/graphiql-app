@@ -2,8 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  background: #f3f6f9;
+  padding: 20px;
+  background-color: #333;
+  color: #fff;
 }
 
 .logo {
@@ -19,4 +20,8 @@
 .logo h2 {
   padding: 0;
   margin: 0;
+}
+
+.title {
+  color: #fa9e1b;
 }
