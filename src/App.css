@@ -18,10 +18,11 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
 }
