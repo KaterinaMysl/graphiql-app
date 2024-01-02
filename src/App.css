@@ -2,7 +2,9 @@ button:disabled {
   background-color: #dcdcdc;
   border: 1px solid #575757;
   color: grey;
+  cursor: not-allowed; 
 }
+
 
 html,
 body {
