@@ -1,0 +1,25 @@
+.container {
+  text-align: center;
+  padding: 50px;
+}
+
+.title {
+  font-size: 2em;
+  color: #333;
+}
+
+.description {
+  font-size: 1.2em;
+  color: #555;
+  margin-top: 20px;
+}
+
+.description a {
+  color: #fa9e1b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.description a:hover {
+  text-decoration: underline;
+}

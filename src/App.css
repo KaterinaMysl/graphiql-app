@@ -4,7 +4,8 @@ button:disabled {
   color: grey;
 }
 
-html, body {
+html,
+body {
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
