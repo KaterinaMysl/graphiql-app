@@ -9,7 +9,9 @@ const Main = () => {
     <>
       <Header />
       <main className={styles.main}>
-        <Outlet />
+        <div className="container">
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </>
