@@ -7,5 +7,3 @@ export const firebaseConfig = {
   appId: import.meta.env.PIX_APP_ID,
   measurementId: import.meta.env.PIX_MEASUREMENT_ID,
 };
-
-console.log('api', import.meta.env.PIX_API_KEY);

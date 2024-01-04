@@ -1,0 +1,7 @@
+.editor {
+  height: 500px;
+  margin: 20px;
+  border: 1px solid black;
+  text-align: left;
+  overflow: hidden;
+}

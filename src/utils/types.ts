@@ -36,3 +36,13 @@ export type AboutTeamType = {
   button: string;
   details: TeamDetails;
 };
+
+export interface Suggestion {
+  label: string;
+  kind: number;
+  insertText: string;
+}
+
+export interface Schema {
+  label: string;
+}

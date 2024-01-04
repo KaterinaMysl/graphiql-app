@@ -1,0 +1,8 @@
+.code {
+  height: 500px;
+  width: 45%;
+  margin: 20px;
+  border: 1px solid black;
+  text-align: left;
+  overflow: hidden;
+}

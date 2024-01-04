@@ -1,0 +1,18 @@
+.editorsContainer {
+  display: flex;
+  column-gap: 20px;
+}
+
+.queryContainer {
+  width: 45%;
+}
+
+.editorsContainer button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.editorsContainer button:active {
+  background-color: aquamarine;
+}
