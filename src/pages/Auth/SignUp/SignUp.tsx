@@ -57,12 +57,16 @@ const SignUp = () => {
       <p>{errors.name?.message}</p>
       <input type="text" {...register('email')} placeholder="Email" />
       <p>{errors.email?.message}</p>
-      <PasswordInput control={control} name="password" placeholder="Password" />
+      <PasswordInput<AuthInfo>
+        control={control}
+        name="password"
+        placeholder="Password"
+      />
       <p className={styles.green}>
         Your password strength is <strong>{passwordStrength}</strong>
       </p>
       <p>{errors.password?.message}</p>
-      <PasswordInput
+      <PasswordInput<AuthInfo>
         control={control}
         name="confirmPassword"
         placeholder="Confirm password"

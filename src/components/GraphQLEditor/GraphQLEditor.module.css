@@ -16,3 +16,8 @@
 .editorsContainer button:active {
   background-color: aquamarine;
 }
+
+.error {
+  height: 20px;
+  color: red;
+}

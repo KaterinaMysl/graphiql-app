@@ -50,7 +50,7 @@ export default function QueryEditor({ schema, handleQuery }: Props) {
 
   const myCompletions = (context: CompletionContext) => {
     const word = context.matchBefore(/\w*/);
-    if (word.from == word.to && !context.explicit) return null;
+    if (word?.from == word?.to && !context.explicit) return null;
     /*
      const options: Completion[] = [
       { label: 'match', type: 'keyword' },
@@ -59,7 +59,7 @@ export default function QueryEditor({ schema, handleQuery }: Props) {
     ];*/
 
     return {
-      from: word.from,
+      from: word?.from || 0,
       options: schema,
     };
   };

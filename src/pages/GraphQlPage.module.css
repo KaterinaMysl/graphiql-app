@@ -19,3 +19,8 @@
   color: #555;
   margin-bottom: 30px;
 }
+
+.error {
+  height: 20px;
+  color: red;
+}

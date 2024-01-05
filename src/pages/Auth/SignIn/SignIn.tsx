@@ -10,11 +10,7 @@ import { LINK_NAME, ROUTE_PATH } from '../../../utils/constants';
 import styles from './SignIn.module.css';
 import PasswordInput from '../../../components/PasswordInput/PasswordInput';
 import { SubmitHandler, useForm } from 'react-hook-form';
-
-interface SignInForm {
-  email: string;
-  password: string;
-}
+import { SignInForm } from '../../../utils/types';
 
 const initialFormValues: SignInForm = { email: '', password: '' };
 
@@ -44,7 +40,11 @@ const SignIn = () => {
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
       <input type="text" {...register('email')} placeholder="Email" />
-      <PasswordInput control={control} name="password" placeholder="Password" />
+      <PasswordInput<SignInForm>
+        control={control}
+        name="password"
+        placeholder="Password"
+      />
       <button type="submit" disabled={isValid ? false : true}>
         Sign In
       </button>

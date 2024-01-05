@@ -21,6 +21,7 @@ export default function GraphQLEditor({ endpoint, schema }: Props) {
   const [variables, setVariables] = useState('');
   const [headers, setHeaders] = useState('');
   const [graphqlResult, setGraphqlResult] = useState<string>('');
+  const [error, setError] = useState('');
 
   const handleQuery = (data: string) => {
     setQuery(data);
@@ -41,7 +42,9 @@ export default function GraphQLEditor({ endpoint, schema }: Props) {
         setGraphqlResult(JSON.stringify(response, null, 2));
       }
     } catch (error) {
-      console.error('GraphQL Error:', error);
+      if (error && error instanceof Error) {
+        setError('Something wrong with the Api data');
+      }
     }
   };
 
@@ -56,6 +59,7 @@ export default function GraphQLEditor({ endpoint, schema }: Props) {
         <button onClick={handleSubmit}>Run</button>
         <ResultEditor results={graphqlResult} />
       </div>
+      <div className={styles.error}>{error != '' && error}</div>
     </>
   );
 }

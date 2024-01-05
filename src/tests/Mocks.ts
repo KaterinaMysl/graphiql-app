@@ -78,3 +78,202 @@ export const validatePatternInfoMocks = {
     notValidString: passwordMock[0],
   },
 };
+
+export const mockApiUrl = 'https://rickandmortyapi.com/graphql';
+export const mockApiArrResults = {
+  data: {
+    characters: {
+      results: [
+        {
+          id: '1',
+          name: 'Rick Sanchez',
+        },
+        {
+          id: '2',
+          name: 'Morty Smith',
+        },
+        {
+          id: '3',
+          name: 'Summer Smith',
+        },
+        {
+          id: '4',
+          name: 'Beth Smith',
+        },
+        {
+          id: '5',
+          name: 'Jerry Smith',
+        },
+        {
+          id: '6',
+          name: 'Abadango Cluster Princess',
+        },
+        {
+          id: '7',
+          name: 'Abradolf Lincler',
+        },
+        {
+          id: '8',
+          name: 'Adjudicator Rick',
+        },
+        {
+          id: '9',
+          name: 'Agency Director',
+        },
+        {
+          id: '10',
+          name: 'Alan Rails',
+        },
+        {
+          id: '11',
+          name: 'Albert Einstein',
+        },
+        {
+          id: '12',
+          name: 'Alexander',
+        },
+        {
+          id: '13',
+          name: 'Alien Googah',
+        },
+        {
+          id: '14',
+          name: 'Alien Morty',
+        },
+        {
+          id: '15',
+          name: 'Alien Rick',
+        },
+        {
+          id: '16',
+          name: 'Amish Cyborg',
+        },
+        {
+          id: '17',
+          name: 'Annie',
+        },
+        {
+          id: '18',
+          name: 'Antenna Morty',
+        },
+        {
+          id: '19',
+          name: 'Antenna Rick',
+        },
+        {
+          id: '20',
+          name: 'Ants in my Eyes Johnson',
+        },
+      ],
+    },
+  },
+};
+export const mockArrQuery = `query {
+  characters {
+    results{
+      id
+      name
+    }
+  }
+}`;
+export const mockArrQueryWithVariables = `query($page:Int) {
+  characters(page:$page) {
+    results{
+      id
+      name
+    }
+  }
+}`;
+export const mockVariables = JSON.stringify({ page: 10 });
+export const mockApiArrResultsByVariables = {
+  data: {
+    characters: {
+      results: [
+        {
+          id: '181',
+          name: "Jessica's Friend",
+        },
+        {
+          id: '182',
+          name: 'Jim',
+        },
+        {
+          id: '183',
+          name: 'Johnny Depp',
+        },
+        {
+          id: '184',
+          name: 'Jon',
+        },
+        {
+          id: '185',
+          name: 'Joseph Eli Lipkip',
+        },
+        {
+          id: '186',
+          name: 'Joyce Smith',
+        },
+        {
+          id: '187',
+          name: 'Juggling Rick',
+        },
+        {
+          id: '188',
+          name: 'Karen Entity',
+        },
+        {
+          id: '189',
+          name: 'Katarina',
+        },
+        {
+          id: '190',
+          name: 'Keara',
+        },
+        {
+          id: '191',
+          name: 'Kevin',
+        },
+        {
+          id: '192',
+          name: 'King Flippy Nips',
+        },
+        {
+          id: '193',
+          name: 'King Jellybean',
+        },
+        {
+          id: '194',
+          name: 'Kozbian',
+        },
+        {
+          id: '195',
+          name: 'Kristen Stewart',
+        },
+        {
+          id: '196',
+          name: 'Krombopulos Michael',
+        },
+        {
+          id: '197',
+          name: 'Kyle',
+        },
+        {
+          id: '198',
+          name: 'Lady Katana',
+        },
+        {
+          id: '199',
+          name: 'Larva Alien',
+        },
+        {
+          id: '200',
+          name: 'Lawyer Morty',
+        },
+      ],
+    },
+  },
+};
+
+export const mockHeaders = JSON.stringify(
+  'Content-Type: text/html; charset=utf-8'
+);

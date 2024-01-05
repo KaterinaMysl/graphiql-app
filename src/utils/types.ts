@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { FieldValues } from 'react-hook-form';
 
 export type TeamDetails = {
   aboutMe: string;
@@ -45,4 +46,9 @@ export interface Suggestion {
 
 export interface Schema {
   label: string;
+}
+
+export interface SignInForm extends FieldValues {
+  email: string;
+  password: string;
 }

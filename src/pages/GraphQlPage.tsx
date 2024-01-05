@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import GraphQLEditor from '../components/GraphQLEditor/GraphQLEditor';
 import { Schema } from '../utils/types';
 import { getSchema } from '../services/getSchema';
@@ -9,13 +9,23 @@ const initialApi = 'https://rickandmortyapi.com/graphql';
 const GraphQlPage = () => {
   const [inputValue, setInputValue] = useState(initialApi);
   const [schema, setSchema] = useState([] as Schema[]);
+  const [error, setError] = useState('');
 
-  const handlerClick = () => {
-    const f = async () => {
+  const handleUrlChange = (e: ChangeEvent) => {
+    const input = e.target as HTMLInputElement;
+    setInputValue(input.value);
+    setError('');
+  };
+
+  const handleChangeApi = async () => {
+    try {
       const currSchema = await getSchema(inputValue);
       setSchema(currSchema);
-    };
-    f();
+    } catch (error) {
+      if (error && error instanceof Error) {
+        setError('Something wrong with the Api url or schema');
+      }
+    }
   };
 
   return (
@@ -27,13 +37,10 @@ const GraphQlPage = () => {
           GraphQL API.
         </p>
         <div>
-          <input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <button onClick={handlerClick}>change api</button>
+          <input type="text" value={inputValue} onChange={handleUrlChange} />
+          <button onClick={handleChangeApi}>change api</button>
         </div>
+        <div className={styles.error}>{error != '' && error}</div>
         <GraphQLEditor endpoint={inputValue} schema={schema} />
       </div>
     </>
