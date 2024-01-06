@@ -8,43 +8,31 @@ import {
   emailPattern,
 } from './constants';
 
-export const getCharacterValidationError = (str: string) =>
-  `Your password must have at least 1 ${str} character`;
-
 export const authInfoSchema = object({
   name: string()
     .matches(/^[A-Z][a-z]+/, {
       excludeEmptyString: true,
-      message: 'Name must start from the uppercase letter',
+      message: 'validationErrorMessages.name.pattern',
     })
-    .required('Please, enter your name'),
+    .required('validationErrorMessages.name.required'),
   email: string()
     .matches(emailPattern, {
       excludeEmptyString: true,
-      message: 'Please enter a valid email',
+      message: 'validationErrorMessages.email.pattern',
     })
-    .required('Email is required'),
+    .required('validationErrorMessages.email.required'),
   password: string()
-    .required('Please, enter a password')
-    .matches(
-      NumberPattern,
-      getCharacterValidationError(characterTypeName.digit)
-    )
-    .matches(
-      UppercaseLetterPattern,
-      getCharacterValidationError(characterTypeName.uppercase)
-    )
-    .matches(
-      LowercaseLetterPattern,
-      getCharacterValidationError(characterTypeName.lowercase)
-    )
-    .matches(
-      SpecialSymbolPattern,
-      getCharacterValidationError(characterTypeName.special)
-    ),
+    .required('validationErrorMessages.password.required')
+    .matches(NumberPattern, characterTypeName.digit)
+    .matches(UppercaseLetterPattern, characterTypeName.uppercase)
+    .matches(LowercaseLetterPattern, characterTypeName.lowercase)
+    .matches(SpecialSymbolPattern, characterTypeName.special),
   confirmPassword: string()
-    .required('Please, type your password again')
-    .oneOf([ref('password')], "Passwords doesn't match"),
+    .required('validationErrorMessages.confirmPassword.required')
+    .oneOf(
+      [ref('password')],
+      'validationErrorMessages.confirmPassword.pattern'
+    ),
 });
 
 export interface AuthInfo extends yup.InferType<typeof authInfoSchema> {}
@@ -53,9 +41,9 @@ export const emailSchema = object({
   email: string()
     .matches(emailPattern, {
       excludeEmptyString: true,
-      message: 'Please enter a valid email',
+      message: 'validationErrorMessages.email.pattern',
     })
-    .required('Email is required'),
+    .required('validationErrorMessages.email.required'),
 });
 
 export interface Email extends yup.InferType<typeof emailSchema> {}

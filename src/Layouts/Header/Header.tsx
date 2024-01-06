@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useLocalization } from '../../localization/LocalizationContext';
 
-import { HEADER } from '../../utils/constants';
+import { HEADER, translations } from '../../utils/constants';
 import Navigate from '../../pages/Welcome/Navigate';
 
 import styles from './Header.module.css';
 
 const Header = () => {
   const [isSticky, setSticky] = useState(false);
-
+  const { lang, toggleLang } = useLocalization();
+  const translatedConstants = translations[lang];
   const handleScroll = () => {
     setSticky(window.scrollY > 0);
   };
@@ -24,9 +26,17 @@ const Header = () => {
   return (
     <header className={`${styles.header} ${isSticky ? styles.sticky : ''}`}>
       <div className={styles.container}>
-        <Link to={HEADER.link} className={styles.logo}>
-          <h2 className={styles.title}>{HEADER.title}</h2>
-        </Link>
+        <div className={styles.firstblock}>
+          <Link to={HEADER.link} className={styles.logo}>
+            <h2 className={styles.title}>{HEADER.title}</h2>
+          </Link>
+          <button onClick={toggleLang}>
+            {translatedConstants.MAIN.toggle}
+            <p>
+              {translatedConstants.MAIN.current} {lang}
+            </p>
+          </button>
+        </div>
         <Navigate />
       </div>
     </header>

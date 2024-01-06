@@ -1,4 +1,5 @@
 import { Component, ReactNode } from 'react';
+import styles from './ErrorBoundary.module.css';
 
 type ErrorBoundaryProps = {
   children?: ReactNode;
@@ -24,12 +25,11 @@ export default class ErrorBoundary extends Component<
   render(): ReactNode {
     if (this.state.hasError) {
       return (
-        <div className="error-container">
+        <div className={styles.errorcontainer}>
           <div>
-            <h2>An error occurred</h2>
-            <button onClick={this.handleReset}>
-              Please restore operation.
-            </button>
+            <h2 className={styles.title}>
+              An error occurred/ Произошла ошибка
+            </h2>
           </div>
         </div>
       );

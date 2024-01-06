@@ -10,8 +10,24 @@
 
 .form input {
   padding: 10px;
-  margin-bottom: 10px;
   font-size: 18px;
+}
+
+.form p {
+  height: 12px;
+  text-align: left;
+  font-size: 12px;
+  color: red;
+  margin: 10px 0 15px;
+}
+
+.form p.strong {
+  color: green;
+  margin: 10px 0 0;
+}
+
+.form p.poor {
+  margin: 10px 0 0;
 }
 
 .buttons__container {

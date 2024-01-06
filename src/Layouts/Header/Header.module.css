@@ -22,6 +22,19 @@
   margin: 0 auto;
 }
 
+.firstblock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container button {
+  margin: 10px;
+  padding: 0px;
+  width: 50px;
+}
+
 .sticky {
   position: fixed;
   top: 0;
@@ -51,4 +64,10 @@
 
 .title {
   color: #fa9e1b;
+}
+
+@media only screen and (width <= 520px) {
+  .container {
+    flex-direction: column;
+  }
 }

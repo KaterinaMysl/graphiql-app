@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../redux/hook';
 import { unsetToken } from '../../redux/slices/tokenSlice';
 import {
   ROUTE_PATH,
-  LINK_NAME,
+  translations,
   TOKEN_TITLE,
   emptyToken,
 } from '../../utils/constants';
@@ -13,12 +13,14 @@ import useToken from '../../hooks/useToken';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Token } from '../../utils/types';
 import styles from './Navigate.module.css';
+import { useLocalization } from '../../localization/LocalizationContext';
 
 const Navigate = () => {
   const dispatch = useAppDispatch();
   const isToken = useToken(false);
   const [, setValue] = useLocalStorage<Token>(TOKEN_TITLE, emptyToken);
-
+  const { lang } = useLocalization();
+  const translatedConstants = translations[lang];
   const handleLogout = () => {
     dispatch(unsetToken());
     setValue(emptyToken);
@@ -31,10 +33,10 @@ const Navigate = () => {
         {isToken ? (
           <>
             <Link to={ROUTE_PATH.graphQl} className={styles.link}>
-              {LINK_NAME.graphQl}
+              {translatedConstants.LINK_NAME.graphQl}
             </Link>
             <button className={styles.logoutBtn} onClick={handleLogout}>
-              Logout
+              {translatedConstants.LINK_NAME.logout}
             </button>
           </>
         ) : (
@@ -43,14 +45,14 @@ const Navigate = () => {
               to={`${ROUTE_PATH.auth}/${ROUTE_PATH.login}`}
               className={styles.link}
             >
-              {LINK_NAME.login}
+              {translatedConstants.LINK_NAME.login}
             </Link>
             <span className={styles.separator}>/</span>
             <Link
               to={`${ROUTE_PATH.auth}/${ROUTE_PATH.registration}`}
               className={styles.link}
             >
-              {LINK_NAME.registration}
+              {translatedConstants.LINK_NAME.registration}
             </Link>
           </>
         )}
