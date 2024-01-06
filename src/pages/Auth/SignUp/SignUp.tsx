@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
+import { useLocalization } from '../../../localization/LocalizationContext';
 import { registerWithEmailAndPassword } from '../../../services/firebase';
-
+import { translations } from '../../../utils/constants';
 import { checkPasswordStrength } from '../../../utils/helpers';
 import { Strength } from '../../../utils/types';
 import { AuthInfo, authInfoSchema } from '../../../validation/form.schema';
@@ -20,7 +20,8 @@ const initialAuthInfo: AuthInfo = {
 
 const SignUp = () => {
   const [passwordStrength, setPasswordStrength] = useState(Strength.poor);
-
+  const { lang } = useLocalization();
+  const translatedConstants = translations[lang];
   const {
     register,
     handleSubmit,
@@ -53,19 +54,32 @@ const SignUp = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
-      <input type="text" {...register('name')} placeholder="Enter name" />
+      <input
+        type="text"
+        {...register('name')}
+        placeholder={translatedConstants.SIGN_UP.enter}
+      />
       <p>{errors.name?.message}</p>
-      <input type="text" {...register('email')} placeholder="Email" />
+      <input
+        type="text"
+        {...register('email')}
+        placeholder={translatedConstants.SIGN_UP.email}
+      />
       <p>{errors.email?.message}</p>
-      <PasswordInput control={control} name="password" placeholder="Password" />
+      <PasswordInput
+        control={control}
+        name="password"
+        placeholder={translatedConstants.SIGN_UP.password}
+      />
       <p className={styles.green}>
-        Your password strength is <strong>{passwordStrength}</strong>
+        {translatedConstants.SIGN_UP.strength}{' '}
+        <strong>{passwordStrength}</strong>
       </p>
       <p>{errors.password?.message}</p>
       <PasswordInput
         control={control}
         name="confirmPassword"
-        placeholder="Confirm password"
+        placeholder={translatedConstants.SIGN_UP.confirm}
       />
       <p>{errors.confirmPassword?.message}</p>
       <div className={styles.buttons__container}>
@@ -74,10 +88,10 @@ const SignUp = () => {
           className={styles.reset__btn}
           onClick={handleReset}
         >
-          Reset
+          {translatedConstants.SIGN_UP.reset}
         </button>
         <button type="submit" disabled={isValid ? false : true}>
-          Sign up
+          {translatedConstants.SIGN_UP.signUP}
         </button>
       </div>
     </form>

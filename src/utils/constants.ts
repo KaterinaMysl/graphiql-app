@@ -46,8 +46,8 @@ export const translations = {
       logout: 'Logout',
     },
     MAIN: {
-      toggle: 'Toggle Language',
-      current: 'Current Language:',
+      toggle: '',
+      current: '',
     },
     SIGN_IN: {
       email: 'Email',
@@ -57,6 +57,15 @@ export const translations = {
       forget: 'Forgot Password?',
       not: 'Do not have an account?',
       now: 'now.',
+    },
+    SIGN_UP: {
+      email: 'Email',
+      password: 'Password',
+      signUP: 'Sign Up',
+      reset: 'Reset',
+      confirm: 'Confirm password',
+      strength: 'Your password strength is',
+      enter: 'Enter name',
     },
     TOKEN_TITLE: 'PIX_token',
     emptyToken: {
@@ -81,6 +90,14 @@ export const translations = {
       text: `Welcome to the GraphiQL page! This is where you can interact with your
       GraphQL API.`,
     },
+    ERRORBOUNDARY: {
+      title: 'An error occurred',
+    },
+    RESET: {
+      cancel: 'Cancel',
+      reset: 'Reset',
+      email: 'Email',
+    },
     ABOUT_PROJECT_CONTENT: {
       video:
         'https://www.youtube.com/watch?v=eIQh02xuVw4&t=2s&ab_channel=Fireship',
@@ -92,8 +109,17 @@ export const translations = {
     TEAM_CONTENT: {
       title: 'MEET OUR CREATIVE TEAM',
     },
+    P404: {
+      title: '404 Page Not Found',
+      text: 'The page you are looking for might be in another universe.',
+      link: 'Go back to the home page.',
+    },
     FOOTER: {
       text: '© 2023 | All Rights Reserved',
+    },
+    SCHEMA: {
+      character1: 'Your password must have at least 1',
+      character2: 'character',
     },
     Popup: {
       about: 'About me:',
@@ -186,8 +212,8 @@ export const translations = {
       logout: 'Выйти',
     },
     MAIN: {
-      toggle: 'Переключить язык',
-      current: 'Текущий язык:',
+      toggle: '',
+      current: '',
     },
     SIGN_IN: {
       email: 'Почта',
@@ -197,6 +223,15 @@ export const translations = {
       forget: 'Забыли пароль?',
       not: 'Еще не регистрировались?',
       now: 'сейчас.',
+    },
+    SIGN_UP: {
+      email: 'Почта',
+      password: 'Пароль',
+      signUP: 'Регистрация',
+      reset: 'Сбросить',
+      confirm: 'Подтвердить пароль',
+      strength: 'Сила вашего пароля',
+      enter: 'Введите имя',
     },
     TOKEN_TITLE: 'PIX_токен',
     emptyToken: {
@@ -221,6 +256,14 @@ export const translations = {
       text: `Добро пожаловать на страницу GraphiQL! Здесь вы можете взаимодействовать со своими
       API GraphQL.`,
     },
+    ERRORBOUNDARY: {
+      title: 'Произошла ошибка',
+    },
+    RESET: {
+      cancel: 'Отменить',
+      reset: 'Сброс',
+      email: 'Почта',
+    },
     ABOUT_PROJECT_CONTENT: {
       video:
         'https://www.youtube.com/watch?v=eIQh02xuVw4&t=2s&ab_channel=Fireship',
@@ -232,8 +275,17 @@ export const translations = {
     TEAM_CONTENT: {
       title: 'ПОЗНАКОМЬТЕСЬ С НАШЕЙ ТВОРЧЕСКОЙ КОМАНДОЙ',
     },
+    P404: {
+      title: 'Страница 404 не найдена',
+      text: 'Страница, которую вы ищете, может находиться в другой вселенной.',
+      link: 'Вернитесь на главную страницу.',
+    },
     FOOTER: {
       text: '© 2023 | Все права защищены',
+    },
+    SCHEMA: {
+      character1: 'Ваш пароль должен содержать не менее 1',
+      character2: 'символа',
     },
     Popup: {
       about: 'Обо мне:',

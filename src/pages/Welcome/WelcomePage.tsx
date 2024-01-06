@@ -10,7 +10,7 @@ import { useLocalization } from '../../localization/LocalizationContext';
 const WelcomePage = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);
   const [detailsItem, setDetailsOpen] = useState<number>(0);
-  const { lang, toggleLang } = useLocalization();
+  const { lang } = useLocalization();
   const translatedConstants = translations[lang];
 
   const handlerOnClick = (id: number) => {
@@ -20,10 +20,6 @@ const WelcomePage = () => {
 
   return (
     <div className={styles.welcomePage}>
-      <button onClick={toggleLang}>{translatedConstants.MAIN.toggle}</button>
-      <p>
-        {translatedConstants.MAIN.current} {lang}
-      </p>
       <AboutTeam
         data={translatedConstants.ABOUT_TEAM}
         onClick={handlerOnClick}

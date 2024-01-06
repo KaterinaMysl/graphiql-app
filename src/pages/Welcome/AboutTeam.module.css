@@ -190,6 +190,6 @@
 
 @media only screen and (width <= 520px) {
   .content > div {
-    width: 243px;
+    width: 200px;
   }
 }

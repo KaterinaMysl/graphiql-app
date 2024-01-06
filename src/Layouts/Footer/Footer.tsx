@@ -14,6 +14,7 @@ const Footer = () => {
             <img src={rssLogo} alt=" rss logo" />
           </a>
         </div>
+
         <p>{translatedConstants.FOOTER.text}</p>
         <div className={styles.github}>
           <a href="https://github.com/KaterinaMysl">
