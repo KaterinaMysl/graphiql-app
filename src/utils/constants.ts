@@ -183,7 +183,8 @@ export const translations = {
           english: 'B1+',
           skills:
             'HTML, CSS/SASS, JS, TS, React, Angular, NodeJS, GIT/GitHub/GitLab, VS Code, WebPack, Figma, Photoshop',
-          contribution: ``,
+          contribution: `Halina is a lover of understanding something new, clean code and, as it turns out, tests.
+          And as a result, she paid attention to firebase authorization, made a little magic with editors and enjoyed writing all kinds of tests`,
           githubIcon: github,
           githubLink: 'https://github.com/halinapp',
         },
@@ -352,7 +353,7 @@ export const translations = {
         button: 'Подробнее...',
         details: {
           name: 'Галина Пищало',
-          avatar: '',
+          avatar: avatar2,
           aboutMe: `Я бы хотела работать с Реакт проектами в качестве фулстек разработчика и использовать мои новые приобретенные знания за последнее время.
           Я высоко мотивированная и трудолюбивая. 
           Я могу работать как в команде так и в одиночку, но все-таки предпочитаю командную работу, 
@@ -362,7 +363,8 @@ export const translations = {
           english: 'B1+',
           skills:
             'HTML, CSS/SASS, JS, TS, React, Angular, NodeJS, GIT/GitHub/GitLab, VS Code, WebPack, Figma, Photoshop',
-          contribution: ``,
+          contribution: `Галина любительница разобраться в чем-то новеньком, чистого кода и как оказалось тестов. 
+            И как итог - уделила внимание firebase авторизации, немного поколдовала с редакторами и получала удовольствие от написания всевозможных тестов`,
           githubIcon: github,
           githubLink: 'https://github.com/halinapp',
         },

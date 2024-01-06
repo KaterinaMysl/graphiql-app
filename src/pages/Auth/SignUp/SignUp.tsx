@@ -7,6 +7,7 @@ import { translations } from '../../../utils/constants';
 import {
   checkPasswordStrength,
   getCharacterValidationError,
+  getErrorByPath,
 } from '../../../utils/helpers';
 import { Strength } from '../../../utils/types';
 import { AuthInfo, authInfoSchema } from '../../../validation/form.schema';
@@ -62,13 +63,7 @@ const SignUp = () => {
   };
 
   const showError = useCallback(
-    (messagePath: string): string =>
-      messagePath
-        .split('.')
-        .reduce(
-          (curr, pathPart: string) => curr[pathPart],
-          validationConstants
-        ),
+    (messagePath: string) => getErrorByPath(messagePath, validationConstants),
     [validationConstants]
   );
 

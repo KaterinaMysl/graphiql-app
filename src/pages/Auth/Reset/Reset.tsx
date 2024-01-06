@@ -7,12 +7,17 @@ import { ROUTE_PATH, translations } from '../../../utils/constants';
 import { Email, emailSchema } from '../../../validation/form.schema';
 import { useLocalization } from '../../../localization/LocalizationContext';
 
+import { useCallback } from 'react';
+import { getErrorByPath } from '../../../utils/helpers';
+import { translatedValidations } from '../../../validation/constants';
+
 import styles from './Reset.module.css';
 
 const Reset = () => {
   const navigate = useNavigate();
   const { lang } = useLocalization();
   const translatedConstants = translations[lang];
+  const validationConstants = translatedValidations[lang];
 
   const {
     register,
@@ -32,6 +37,11 @@ const Reset = () => {
     sendPasswordReset(email);
   };
 
+  const showError = useCallback(
+    (messagePath: string) => getErrorByPath(messagePath, validationConstants),
+    [validationConstants]
+  );
+
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
       <input
@@ -39,7 +49,7 @@ const Reset = () => {
         {...register('email')}
         placeholder={translatedConstants.RESET.email}
       />
-      <p>{errors.email?.message}</p>
+      <p>{errors.email?.message && showError(errors.email.message)}</p>
       <div className={styles.buttons__container}>
         <button className={styles.cancel__btn} onClick={handleCancel}>
           {translatedConstants.RESET.cancel}
