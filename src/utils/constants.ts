@@ -28,6 +28,8 @@ export const HEADER = {
   title: 'GraphiQL',
 };
 
+export const initialApi = 'https://rickandmortyapi.com/graphql';
+
 export const translations = {
   en: {
     ROUTE_PATH: {

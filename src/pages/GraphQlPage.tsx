@@ -1,13 +1,11 @@
 import { ChangeEvent, useState } from 'react';
 import GraphQLEditor from '../components/GraphQLEditor/GraphQLEditor';
 import { Schema } from '../utils/types';
-import { translations } from '../utils/constants';
+import { initialApi, translations } from '../utils/constants';
 import { getSchema } from '../services/getSchema';
 import { useLocalization } from '../localization/LocalizationContext';
 
 import styles from './GraphQlPage.module.css';
-
-const initialApi = 'https://rickandmortyapi.com/graphql';
 
 const GraphQlPage = () => {
   const [inputValue, setInputValue] = useState(initialApi);

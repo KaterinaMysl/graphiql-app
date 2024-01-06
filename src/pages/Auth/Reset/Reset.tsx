@@ -1,14 +1,13 @@
 import { useNavigate } from 'react-router';
-
-import { sendPasswordReset } from '../../../services/firebase';
-import { ROUTE_PATH, translations } from '../../../utils/constants';
-
-import styles from './Reset.module.css';
-import { Email, emailSchema } from '../../../validation/form.schema';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { sendPasswordReset } from '../../../services/firebase';
+import { ROUTE_PATH, translations } from '../../../utils/constants';
+import { Email, emailSchema } from '../../../validation/form.schema';
 import { useLocalization } from '../../../localization/LocalizationContext';
+
+import styles from './Reset.module.css';
 
 const Reset = () => {
   const navigate = useNavigate();
