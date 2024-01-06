@@ -1,4 +1,7 @@
 import { TeamDetails } from '../../utils/types';
+import { translations } from '../../utils/constants';
+import { useLocalization } from '../../localization/LocalizationContext';
+
 import styles from './Popup.module.css';
 
 type PopupProps = {
@@ -7,6 +10,8 @@ type PopupProps = {
 };
 
 const Popup = ({ onClick, data }: PopupProps) => {
+  const { lang } = useLocalization();
+  const translatedConstants = translations[lang];
   return (
     <div className={`${styles.modal} open`}>
       <div>
@@ -21,27 +26,27 @@ const Popup = ({ onClick, data }: PopupProps) => {
             <h3>{data.name}</h3>
             <div className={styles.description}>
               <p>
-                <span>About me: </span>
+                <span>{translatedConstants.Popup.about}</span>
                 {data.aboutMe}
               </p>
               <p>
-                <span>Location: </span>
+                <span>{translatedConstants.Popup.location}</span>
                 {data.location}
               </p>
               <p>
-                <span>Education: </span>
+                <span>{translatedConstants.Popup.education}</span>
                 {data.education}
               </p>
               <p>
-                <span>English: </span>
+                <span>{translatedConstants.Popup.english}</span>
                 {data.english}
               </p>
               <p>
-                <span>Skills: </span>
+                <span>{translatedConstants.Popup.skills} </span>
                 {data.skills}
               </p>
               <p>
-                <span>Contributions: </span>
+                <span>{translatedConstants.Popup.contributions}</span>
                 {data.contribution}
               </p>
             </div>

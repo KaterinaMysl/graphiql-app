@@ -18,7 +18,7 @@
 
   box-sizing: border-box;
   width: 40%;
-  margin: 30% auto;
+  margin: 20% auto;
   padding: 20px;
 
   background-color: #fff;
@@ -138,7 +138,7 @@
 }
 
 .contact a img:hover {
-  filter: invert(51%) sepia(80%) saturate(3693%) hue-rotate(164deg)
+  filter: invert(30%) sepia(70%) saturate(120%) hue-rotate(30deg)
     brightness(98%) contrast(101%);
 }
 
@@ -152,6 +152,7 @@
   .modal > div {
     width: 90%;
     padding: 5px;
+    margin: 50% auto;
   }
 
   .details {

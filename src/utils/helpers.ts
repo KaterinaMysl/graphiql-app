@@ -1,8 +1,11 @@
 import {
   PasswordStrengthRequirements,
+  characterTypeName,
+  characterValidationErrorParts,
   maxPasswordStrength,
+  translatedCharacterTypeName,
 } from '../validation/constants';
-import { Strength } from './types';
+import { Lang, Strength } from './types';
 
 export const isTokenNotExpired = (expirationTime: string): boolean => {
   const time = new Date(expirationTime);
@@ -51,4 +54,15 @@ export const countMatchedStrengthRequirements = (password: string): number => {
 export const convertUnicodeToChar = (unicodeStr: string): string => {
   const code = parseInt(unicodeStr, 16);
   return String.fromCharCode(code);
+};
+
+export const getCharacterValidationError = (
+  type: keyof typeof characterTypeName,
+  lang: Lang
+) => {
+  const typeName = translatedCharacterTypeName[lang][type];
+  const firstPart = characterValidationErrorParts[lang][0];
+  const lastPart = characterValidationErrorParts[lang][1];
+
+  return `${firstPart}${typeName}${lastPart}`;
 };

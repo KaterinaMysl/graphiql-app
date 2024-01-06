@@ -1,18 +1,14 @@
-import { expect, describe, test } from 'vitest';
-import { getCharacterValidationError } from '../../validation/form.schema';
-import { characterTypeName } from '../../validation/constants';
+import { test, expect } from 'vitest';
+import { emailSchema } from '../../validation/form.schema';
 
-const errorString = ['Your password must have at least 1', 'character'];
+test('should valid email schema', async () => {
+  const testObject = { email: 'some@email.com' };
+  await expect(emailSchema.validateAt('email', testObject)).resolves.toBe(
+    testObject.email
+  );
+});
 
-const checkValidationErrorByType = (type: string) => {
-  test(`should return validation error message about ${type}`, () => {
-    const error = getCharacterValidationError(type);
-    const expectErrorText = `${errorString[0]} ${type} ${errorString[1]}`;
-    expect(error).toBe(expectErrorText);
-  });
-};
-describe('Form schema', () => {
-  Object.keys(characterTypeName).map((key) => {
-    checkValidationErrorByType(key);
-  });
+test('should throw if email schema is not valid', async () => {
+  const testObject = { field: 'some@email.com' };
+  await expect(emailSchema.validateAt('email', testObject)).rejects.toThrow();
 });

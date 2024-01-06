@@ -1,7 +1,11 @@
 import styles from './Footer.module.css';
 import rssLogo from '../../assets/img/svg/rs_school.svg';
 import gitLogo from '../../assets/img/svg/github-mark.svg';
+import { useLocalization } from '../../localization/LocalizationContext';
+import { translations } from '../../utils/constants';
 const Footer = () => {
+  const { lang } = useLocalization();
+  const translatedConstants = translations[lang];
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -10,7 +14,8 @@ const Footer = () => {
             <img src={rssLogo} alt=" rss logo" />
           </a>
         </div>
-        <p>© 2023 | All Rights Reserved</p>
+
+        <p>{translatedConstants.FOOTER.text}</p>
         <div className={styles.github}>
           <a href="https://github.com/KaterinaMysl">
             <img src={gitLogo} alt="github logo" />

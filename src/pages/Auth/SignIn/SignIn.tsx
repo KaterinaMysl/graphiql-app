@@ -1,20 +1,22 @@
 import { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { useLocalization } from '../../../localization/LocalizationContext';
 import {
   sigInWithEmailAndPassword,
   signInWithGoogle,
 } from '../../../services/firebase';
-import { LINK_NAME, ROUTE_PATH } from '../../../utils/constants';
+import { translations, ROUTE_PATH } from '../../../utils/constants';
+import { SignInForm } from '../../../utils/types';
+import PasswordInput from '../../../components/PasswordInput/PasswordInput';
 
 import styles from './SignIn.module.css';
-import PasswordInput from '../../../components/PasswordInput/PasswordInput';
-import { SubmitHandler, useForm } from 'react-hook-form';
-import { SignInForm } from '../../../utils/types';
 
 const initialFormValues: SignInForm = { email: '', password: '' };
 
 const SignIn = () => {
+  const { lang } = useLocalization();
+  const translatedConstants = translations[lang];
   const {
     register,
     handleSubmit,
@@ -39,29 +41,33 @@ const SignIn = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
-      <input type="text" {...register('email')} placeholder="Email" />
+      <input
+        type="text"
+        {...register('email')}
+        placeholder={translatedConstants.SIGN_IN.email}
+      />
       <PasswordInput<SignInForm>
         control={control}
         name="password"
-        placeholder="Password"
+        placeholder={translatedConstants.SIGN_IN.password}
       />
       <button type="submit" disabled={isValid ? false : true}>
-        Sign In
+        {translatedConstants.SIGN_IN.signIn}
       </button>
       <button className={styles.google__btn} onClick={handleSignInWithGoogle}>
-        Sign In with Google
+        {translatedConstants.SIGN_IN.google}
       </button>
       <div>
         <Link to={`${ROUTE_PATH.auth}/${ROUTE_PATH.reset}`}>
-          Forgot Password?
+          {translatedConstants.SIGN_IN.forget}
         </Link>
       </div>
       <div>
-        Do not have an account? <br />
+        {translatedConstants.SIGN_IN.not} <br />
         <Link to={`${ROUTE_PATH.auth}/${ROUTE_PATH.registration}`}>
-          {LINK_NAME.registration}
+          {translatedConstants.LINK_NAME.registration}
         </Link>{' '}
-        now.
+        {translatedConstants.SIGN_IN.now}
       </div>
     </form>
   );

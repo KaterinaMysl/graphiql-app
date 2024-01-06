@@ -38,6 +38,8 @@ export type AboutTeamType = {
   details: TeamDetails;
 };
 
+export type Lang = 'en' | 'ru';
+
 export interface Suggestion {
   label: string;
   kind: number;

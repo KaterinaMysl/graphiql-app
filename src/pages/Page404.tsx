@@ -1,14 +1,19 @@
-import styles from './Page404.module.css';
-import React from 'react';
 import { Link } from 'react-router-dom';
+import { useLocalization } from '../localization/LocalizationContext';
+import { translations } from '../utils/constants';
+
+import styles from './Page404.module.css';
 
 const Page404 = () => {
+  const { lang } = useLocalization();
+  const translatedConstants = translations[lang];
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>404 Page Not Found</h1>
+      <h1 className={styles.title}>{translatedConstants.P404.title}</h1>
       <p className={styles.description}>
-        The page you are looking for might be in another universe.{<br />}
-        <Link to="/">Go back to the home page.</Link>
+        {translatedConstants.P404.text}
+        {<br />}
+        <Link to="/">{translatedConstants.P404.link}</Link>
       </p>
     </div>
   );

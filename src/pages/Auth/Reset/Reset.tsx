@@ -1,15 +1,18 @@
 import { useNavigate } from 'react-router';
-
-import { sendPasswordReset } from '../../../services/firebase';
-import { ROUTE_PATH } from '../../../utils/constants';
-
-import styles from './Reset.module.css';
-import { Email, emailSchema } from '../../../validation/form.schema';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import { sendPasswordReset } from '../../../services/firebase';
+import { ROUTE_PATH, translations } from '../../../utils/constants';
+import { Email, emailSchema } from '../../../validation/form.schema';
+import { useLocalization } from '../../../localization/LocalizationContext';
+
+import styles from './Reset.module.css';
+
 const Reset = () => {
   const navigate = useNavigate();
+  const { lang } = useLocalization();
+  const translatedConstants = translations[lang];
 
   const {
     register,
@@ -31,13 +34,20 @@ const Reset = () => {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
-      <input type="text" {...register('email')} placeholder="Email" />
+      <input
+        type="text"
+        {...register('email')}
+        placeholder={translatedConstants.RESET.email}
+      />
       <p>{errors.email?.message}</p>
       <div className={styles.buttons__container}>
         <button className={styles.cancel__btn} onClick={handleCancel}>
-          Cancel
+          {translatedConstants.RESET.cancel}
         </button>
-        <button disabled={isValid ? false : true}>Reset</button>
+        <button disabled={isValid ? false : true}>
+          {' '}
+          {translatedConstants.RESET.reset}
+        </button>
       </div>
     </form>
   );
