@@ -89,6 +89,16 @@ export const translations = {
       title: 'GraphiQL Page',
       text: `Welcome to the GraphiQL page! This is where you can interact with your
       GraphQL API.`,
+      apiError: 'Something wrong with the Api url or schema',
+    },
+    GraphQlEditor: {
+      run: 'Run',
+      headers: 'Headers',
+      variables: 'Variables',
+      queryError: 'Something wrong with the query.',
+    },
+    Tabs: {
+      hide: 'Hide',
     },
     ERRORBOUNDARY: {
       title: 'An error occurred',
@@ -258,6 +268,16 @@ export const translations = {
       title: 'Страница GraphiQL',
       text: `Добро пожаловать на страницу GraphiQL! Здесь вы можете взаимодействовать со своими
       API GraphQL.`,
+      apiError: 'Ошибка в ссылке АПИ или тексте схемы',
+    },
+    GraphQlEditor: {
+      run: 'Пуск',
+      headers: 'Заголовки',
+      variables: 'Переменные',
+      queryError: 'Ошибка в запросе.',
+    },
+    Tabs: {
+      hide: 'Спрятать',
     },
     ERRORBOUNDARY: {
       title: 'Произошла ошибка',
@@ -331,11 +351,15 @@ export const translations = {
         details: {
           name: 'Галина Пищало',
           avatar: '',
-          aboutMe: ``,
+          aboutMe: `Я бы хотела работать с Реакт проектами в качестве фулстек разработчика и использовать мои новые приобретенные знания за последнее время.
+          Я высоко мотивированная и трудолюбивая. 
+          Я могу работать как в команде так и в одиночку, но все-таки предпочитаю командную работу, 
+          где я могу делиться знаниями и получать новые от своих коллег, приобретая бесценный опыт.`,
           location: 'Минск, Беларусь',
-          education: '',
-          english: '',
-          skills: 'HTML, CSS/SASS, JS, TS, React, GIT/GitHub, VS Code, WebPack',
+          education: 'Белорусский государственный университет',
+          english: 'B1+',
+          skills:
+            'HTML, CSS/SASS, JS, TS, React, Angular, NodeJS, GIT/GitHub/GitLab, VS Code, WebPack, Figma, Photoshop',
           contribution: ``,
           githubIcon: github,
           githubLink: 'https://github.com/halinapp',

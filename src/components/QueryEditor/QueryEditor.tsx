@@ -51,12 +51,6 @@ export default function QueryEditor({ schema, handleQuery }: Props) {
   const myCompletions = (context: CompletionContext) => {
     const word = context.matchBefore(/\w*/);
     if (word?.from == word?.to && !context.explicit) return null;
-    /*
-     const options: Completion[] = [
-      { label: 'match', type: 'keyword' },
-      { label: 'hello', type: 'variable', info: '(World)' },
-      { label: 'magic', type: 'text', apply: '⠁⭒*.✩.*⭒⠁', detail: 'macro' },
-    ];*/
 
     return {
       from: word?.from || 0,

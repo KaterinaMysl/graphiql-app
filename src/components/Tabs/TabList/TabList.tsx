@@ -1,3 +1,5 @@
+import { useLocalization } from '../../../localization/LocalizationContext';
+import { translations } from '../../../utils/constants';
 import { Tab } from '../types';
 import styles from './TabList.module.css';
 
@@ -9,6 +11,9 @@ interface Props {
 }
 
 const TabList = ({ tabs, activeTab, setActiveTab, hidePanel }: Props) => {
+  const { lang } = useLocalization();
+  const { Tabs: tabsTextVariables } = translations[lang];
+
   return (
     <div className={styles.tabList}>
       {tabs.map((tab, index) => (
@@ -25,7 +30,7 @@ const TabList = ({ tabs, activeTab, setActiveTab, hidePanel }: Props) => {
         key={tabs.length}
         onClick={hidePanel}
       >
-        Hide
+        {tabsTextVariables.hide}
       </button>
     </div>
   );

@@ -1,18 +1,19 @@
 import { useState } from 'react';
+
 import { getData } from '../../services/getData';
+import { editorError } from '../../validation/constants';
+import { validateQuery } from '../../validation/editor';
+import { translations } from '../../utils/constants';
 import { Schema } from '../../utils/types';
+import { useLocalization } from '../../localization/LocalizationContext';
+
 import QueryEditor from '../QueryEditor/QueryEditor';
 import ResultEditor from '../ResultEditor/ResultEditor';
 import VariableEditor from '../VariableEditor/VariableEditor';
 import HeaderEditor from '../HeaderEditor/HeaderEditor';
+import Tabs from '../Tabs/Tabs';
 
 import styles from './GraphQLEditor.module.css';
-import Tabs from '../Tabs/Tabs';
-import { editorError } from '../../validation/constants';
-import { validateQuery } from '../../validation/editor';
-
-export const apiUrl =
-  'https://swapi-graphql.netlify.app/.netlify/functions/index';
 
 type Props = {
   endpoint: string;
@@ -20,6 +21,9 @@ type Props = {
 };
 
 export default function GraphQLEditor({ endpoint, schema }: Props) {
+  const { lang } = useLocalization();
+  const { GraphQlEditor } = translations[lang];
+
   const [query, setQuery] = useState('');
   const [variables, setVariables] = useState('');
   const [headers, setHeaders] = useState('');
@@ -46,14 +50,14 @@ export default function GraphQLEditor({ endpoint, schema }: Props) {
       }
     } catch (error) {
       if (error && error instanceof Error) {
-        setGraphqlResult(`Something wrong with the query.\n${error}`);
+        setGraphqlResult(`${GraphQlEditor.queryError}\n${error}`);
       }
     }
   };
 
   const tabsContent = [
     {
-      label: 'Variables',
+      label: GraphQlEditor.variables,
       content: (
         <VariableEditor
           variables={variables}
@@ -62,7 +66,7 @@ export default function GraphQLEditor({ endpoint, schema }: Props) {
       ),
     },
     {
-      label: 'Headers',
+      label: GraphQlEditor.headers,
       content: <HeaderEditor headers={headers} handleHeaders={handleHeaders} />,
     },
   ];
@@ -74,7 +78,7 @@ export default function GraphQLEditor({ endpoint, schema }: Props) {
           <QueryEditor schema={schema} handleQuery={handleQuery} />
           <Tabs tabs={tabsContent} />
         </div>
-        <button onClick={handleSubmit}>Run</button>
+        <button onClick={handleSubmit}>{GraphQlEditor.run}</button>
         <ResultEditor results={graphqlResult} />
       </div>
     </>

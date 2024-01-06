@@ -14,7 +14,7 @@ const GraphQlPage = () => {
   const [schema, setSchema] = useState([] as Schema[]);
   const [error, setError] = useState('');
   const { lang } = useLocalization();
-  const translatedConstants = translations[lang];
+  const { GraphQlPage } = translations[lang];
 
   const handleUrlChange = (e: ChangeEvent) => {
     const input = e.target as HTMLInputElement;
@@ -28,7 +28,7 @@ const GraphQlPage = () => {
       setSchema(currSchema);
     } catch (error) {
       if (error && error instanceof Error) {
-        setError('Something wrong with the Api url or schema');
+        setError(GraphQlPage.apiError);
       }
     }
   };
@@ -36,12 +36,8 @@ const GraphQlPage = () => {
   return (
     <>
       <div className={styles.container}>
-        <h1 className={styles.title}>
-          {translatedConstants.GraphQlPage.title}
-        </h1>
-        <p className={styles.description}>
-          {translatedConstants.GraphQlPage.text}
-        </p>
+        <h1 className={styles.title}>{GraphQlPage.title}</h1>
+        <p className={styles.description}>{GraphQlPage.text}</p>
         <div className={styles.apiUrlContainer}>
           <input type="text" value={inputValue} onChange={handleUrlChange} />
           <button onClick={handleChangeApi}>change api</button>
