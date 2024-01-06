@@ -8,9 +8,6 @@ import {
   emailPattern,
 } from './constants';
 
-export const getCharacterValidationError = (str: string) =>
-  `Your password must have at least 1 ${str} character`;
-
 export const authInfoSchema = object({
   name: string()
     .matches(/^[A-Z][a-z]+/, {
@@ -26,22 +23,10 @@ export const authInfoSchema = object({
     .required('validationErrorMessages.email.required'),
   password: string()
     .required('validationErrorMessages.password.required')
-    .matches(
-      NumberPattern,
-      getCharacterValidationError(characterTypeName.digit)
-    )
-    .matches(
-      UppercaseLetterPattern,
-      getCharacterValidationError(characterTypeName.uppercase)
-    )
-    .matches(
-      LowercaseLetterPattern,
-      getCharacterValidationError(characterTypeName.lowercase)
-    )
-    .matches(
-      SpecialSymbolPattern,
-      getCharacterValidationError(characterTypeName.special)
-    ),
+    .matches(NumberPattern, characterTypeName.digit)
+    .matches(UppercaseLetterPattern, characterTypeName.uppercase)
+    .matches(LowercaseLetterPattern, characterTypeName.lowercase)
+    .matches(SpecialSymbolPattern, characterTypeName.special),
   confirmPassword: string()
     .required('validationErrorMessages.confirmPassword.required')
     .oneOf(

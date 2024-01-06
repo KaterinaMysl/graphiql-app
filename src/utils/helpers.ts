@@ -1,8 +1,9 @@
 import {
   PasswordStrengthRequirements,
+  characterValidationErrorParts,
   maxPasswordStrength,
 } from '../validation/constants';
-import { Strength } from './types';
+import { Lang, Strength } from './types';
 
 export const isTokenNotExpired = (expirationTime: string): boolean => {
   const time = new Date(expirationTime);
@@ -52,3 +53,6 @@ export const convertUnicodeToChar = (unicodeStr: string): string => {
   const code = parseInt(unicodeStr, 16);
   return String.fromCharCode(code);
 };
+
+export const getCharacterValidationError = (type: string, lang: Lang) =>
+  `${characterValidationErrorParts[lang][0]}${type}${characterValidationErrorParts[lang][1]}`;

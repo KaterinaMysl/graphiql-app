@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { Lang } from '../utils/types';
 
 interface LocalizationContextProps {
-  lang: 'en' | 'ru';
+  lang: Lang;
   toggleLang: () => void;
 }
 

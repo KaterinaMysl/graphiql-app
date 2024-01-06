@@ -36,3 +36,5 @@ export type AboutTeamType = {
   button: string;
   details: TeamDetails;
 };
+
+export type Lang = 'en' | 'ru';

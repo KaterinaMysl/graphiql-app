@@ -4,13 +4,16 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocalization } from '../../../localization/LocalizationContext';
 import { registerWithEmailAndPassword } from '../../../services/firebase';
 import { translations } from '../../../utils/constants';
-import { checkPasswordStrength } from '../../../utils/helpers';
+import {
+  checkPasswordStrength,
+  getCharacterValidationError,
+} from '../../../utils/helpers';
 import { Strength } from '../../../utils/types';
 import { AuthInfo, authInfoSchema } from '../../../validation/form.schema';
 import PasswordInput from '../../../components/PasswordInput/PasswordInput';
+import { translatedValidations } from '../../../validation/constants';
 
 import styles from './SignUp.module.css';
-import { translatedValidations } from '../../../validation/constants';
 
 const initialAuthInfo: AuthInfo = {
   name: '',
@@ -56,15 +59,27 @@ const SignUp = () => {
   };
 
   const showError = useCallback(
-    (messagePath: string) => {
-      return messagePath
+    (messagePath: string) =>
+      messagePath
         .split('.')
         .reduce(
           (curr, pathPart: string) => curr[pathPart],
           validationConstants
-        );
-    },
+        ),
     [validationConstants]
+  );
+
+  const showPasswordError = useCallback(
+    (messagePath: string) => {
+      const pathArr = messagePath.split('.');
+
+      if (pathArr.length === 1) {
+        return getCharacterValidationError(messagePath, lang);
+      }
+
+      return showError(messagePath);
+    },
+    [lang, showError]
   );
 
   return (
@@ -92,7 +107,9 @@ const SignUp = () => {
           {validationConstants.passwordStrength[passwordStrength]}
         </strong>
       </p>
-      <p>{errors.password?.message && showError(errors.password.message)}</p>
+      <p>
+        {errors.password?.message && showPasswordError(errors.password.message)}
+      </p>
       <PasswordInput
         control={control}
         name="confirmPassword"

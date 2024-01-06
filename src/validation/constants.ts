@@ -59,6 +59,27 @@ export const translatedValidationErrorMessages = {
     },
   },
 };
+
+export const characterValidationErrorParts = {
+  en: ['Your password must have at least 1 ', ' character'],
+  ru: ['Ваш пароль должен содержать хотя бы 1 ', ' символ'],
+};
+
+export const translatedCharacterTypeName = {
+  en: {
+    digit: 'digit',
+    uppercase: 'uppercase',
+    lowercase: 'lowercase',
+    special: 'special character',
+  },
+  ru: {
+    digit: 'цифровой',
+    uppercase: 'прописной',
+    lowercase: 'строчный',
+    special: 'специальный',
+  },
+};
+
 export const translatedValidations = {
   en: {
     validationErrorMessages: { ...translatedValidationErrorMessages.ru },
