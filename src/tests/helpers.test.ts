@@ -4,6 +4,7 @@ import {
   checkPasswordStrength,
   convertUnicodeToChar,
   countMatchedStrengthRequirements,
+  getCharacterValidationError,
   isStringMatchPattern,
   isTokenNotExpired,
   isTokenValid,
@@ -16,8 +17,12 @@ import {
   tokenNotExpiredTime,
   validatePatternInfoMocks,
 } from './Mocks';
-import { maxPasswordStrength } from '../validation/constants';
-import { Strength } from '../utils/types';
+import {
+  characterTypeName,
+  characterValidationErrorParts,
+  maxPasswordStrength,
+} from '../validation/constants';
+import { Lang, Strength } from '../utils/types';
 
 const checkAllMatchedRequirementsNumber = (count: number) => {
   test(`should return ${count} if password match ${count} strength requirement`, () => {
@@ -148,6 +153,21 @@ describe('Helpers functions', () => {
       for (let ind = 1; ind < maxPasswordStrength; ind += 1) {
         checkAllMatchedRequirementsNumber(ind);
       }
+    });
+  });
+
+  const checkValidationErrorByTypeLang = (type: string, lang: Lang) => {
+    test(`should return validation ${lang} error message about ${type}`, () => {
+      const error = getCharacterValidationError(type, lang);
+      const expectErrorText = `${characterValidationErrorParts[lang][0]}${type}${characterValidationErrorParts[lang][1]}`;
+      expect(error).toBe(expectErrorText);
+    });
+  };
+
+  describe('Form schema', () => {
+    Object.keys(characterTypeName).map((key) => {
+      checkValidationErrorByTypeLang(key, 'ru');
+      checkValidationErrorByTypeLang(key, 'en');
     });
   });
 

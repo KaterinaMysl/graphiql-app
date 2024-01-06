@@ -7,6 +7,7 @@ import { setToken } from './redux/slices/tokenSlice';
 import { route } from './router/Route';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { TOKEN_TITLE, emptyToken } from './utils/constants';
+import { LocalizationProvider } from './localization/LocalizationContext';
 
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary';
 import './App.css';
@@ -22,9 +23,11 @@ const App = () => {
 
   return (
     <ErrorBoundary>
-      <Provider store={store}>
-        <RouterProvider router={route} />
-      </Provider>
+      <LocalizationProvider>
+        <Provider store={store}>
+          <RouterProvider router={route} />
+        </Provider>
+      </LocalizationProvider>
     </ErrorBoundary>
   );
 };
