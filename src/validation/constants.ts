@@ -22,3 +22,58 @@ export enum characterTypeName {
   lowercase = 'lowercase',
   special = 'special character',
 }
+
+export const translatedValidationErrorMessages = {
+  ru: {
+    name: {
+      pattern: 'Name must start from the uppercase letter',
+      required: 'Please, enter your name',
+    },
+    email: {
+      pattern: 'Please enter a valid email',
+      required: 'Email is required',
+    },
+    password: {
+      required: 'Please, enter a password',
+    },
+    confirmPassword: {
+      pattern: "Passwords doesn't match",
+      required: 'Please, type your password again',
+    },
+  },
+  en: {
+    name: {
+      pattern: 'Имя должно начинаться с большой буквы',
+      required: 'Пожалуйста, введите имя',
+    },
+    email: {
+      pattern: 'Пожалуйста, введите правильный формат email',
+      required: 'Email обязателен для заполнения',
+    },
+    password: {
+      required: 'Пожалуйста, введите пароль',
+    },
+    confirmPassword: {
+      pattern: 'Пароли не совпадают',
+      required: 'Пожалуйста, введите пароль еще раз',
+    },
+  },
+};
+export const translatedValidations = {
+  en: {
+    validationErrorMessages: { ...translatedValidationErrorMessages.ru },
+    passwordStrength: {
+      poor: 'poor',
+      medium: 'medium',
+      strong: 'strong',
+    },
+  },
+  ru: {
+    validationErrorMessages: { ...translatedValidationErrorMessages.en },
+    passwordStrength: {
+      poor: 'слабая',
+      medium: 'средняя',
+      strong: 'достаточная',
+    },
+  },
+};

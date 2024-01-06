@@ -161,13 +161,16 @@ export const translations = {
         button: 'More...',
         details: {
           name: 'Halina Pishchalo',
-          avatar: '',
-          aboutMe: ``,
-          location: '',
-          education: '',
-          english: '',
+          avatar: avatar2,
+          aboutMe: `I would like to work on React projects as a Fullstack developer and apply all my new knowledge.
+             I am a highly motivated and hardworking person. 
+             I can work in a team or alone, but I prefer to be in a team 
+             to be able to share and gain new knowledge and become more experienced.`,
+          location: 'Minsk, Belarus',
+          education: 'Belarusian State University',
+          english: 'B1+',
           skills:
-            'HTML, CSS/SASS, JS, TS, React, GIT/GitHub, VS Code, WebPack, Figma, Photoshop',
+            'HTML, CSS/SASS, JS, TS, React, Angular, NodeJS, GIT/GitHub/GitLab, VS Code, WebPack, Figma, Photoshop',
           contribution: ``,
           githubIcon: github,
           githubLink: 'https://github.com/halinapp',

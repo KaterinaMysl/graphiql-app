@@ -66,10 +66,8 @@
   color: #fa9e1b;
 }
 
-
 @media only screen and (width <= 520px) {
   .container {
     flex-direction: column;
   }
 }
-

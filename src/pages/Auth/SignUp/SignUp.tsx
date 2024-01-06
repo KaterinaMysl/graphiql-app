@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useLocalization } from '../../../localization/LocalizationContext';
@@ -10,6 +10,7 @@ import { AuthInfo, authInfoSchema } from '../../../validation/form.schema';
 import PasswordInput from '../../../components/PasswordInput/PasswordInput';
 
 import styles from './SignUp.module.css';
+import { translatedValidations } from '../../../validation/constants';
 
 const initialAuthInfo: AuthInfo = {
   name: '',
@@ -19,9 +20,11 @@ const initialAuthInfo: AuthInfo = {
 };
 
 const SignUp = () => {
-  const [passwordStrength, setPasswordStrength] = useState(Strength.poor);
   const { lang } = useLocalization();
   const translatedConstants = translations[lang];
+  const validationConstants = translatedValidations[lang];
+
+  const [passwordStrength, setPasswordStrength] = useState(Strength.poor);
   const {
     register,
     handleSubmit,
@@ -52,6 +55,18 @@ const SignUp = () => {
     registerWithEmailAndPassword(name, email, password);
   };
 
+  const showError = useCallback(
+    (messagePath: string) => {
+      return messagePath
+        .split('.')
+        .reduce(
+          (curr, pathPart: string) => curr[pathPart],
+          validationConstants
+        );
+    },
+    [validationConstants]
+  );
+
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
       <input
@@ -59,13 +74,13 @@ const SignUp = () => {
         {...register('name')}
         placeholder={translatedConstants.SIGN_UP.enter}
       />
-      <p>{errors.name?.message}</p>
+      <p>{errors.name?.message && showError(errors.name.message)}</p>
       <input
         type="text"
         {...register('email')}
         placeholder={translatedConstants.SIGN_UP.email}
       />
-      <p>{errors.email?.message}</p>
+      <p>{errors.email?.message && showError(errors.email.message)}</p>
       <PasswordInput
         control={control}
         name="password"
@@ -73,15 +88,20 @@ const SignUp = () => {
       />
       <p className={styles.green}>
         {translatedConstants.SIGN_UP.strength}{' '}
-        <strong>{passwordStrength}</strong>
+        <strong>
+          {validationConstants.passwordStrength[passwordStrength]}
+        </strong>
       </p>
-      <p>{errors.password?.message}</p>
+      <p>{errors.password?.message && showError(errors.password.message)}</p>
       <PasswordInput
         control={control}
         name="confirmPassword"
         placeholder={translatedConstants.SIGN_UP.confirm}
       />
-      <p>{errors.confirmPassword?.message}</p>
+      <p>
+        {errors.confirmPassword?.message &&
+          showError(errors.confirmPassword.message)}
+      </p>
       <div className={styles.buttons__container}>
         <button
           type="reset"
