@@ -78,7 +78,9 @@ export default function GraphQLEditor({ endpoint, schema }: Props) {
           <QueryEditor schema={schema} handleQuery={handleQuery} />
           <Tabs tabs={tabsContent} />
         </div>
-        <button onClick={handleSubmit}>{GraphQlEditor.run}</button>
+        <button className={styles.runBtn} onClick={handleSubmit}>
+          {GraphQlEditor.run}
+        </button>
         <ResultEditor results={graphqlResult} />
       </div>
     </>

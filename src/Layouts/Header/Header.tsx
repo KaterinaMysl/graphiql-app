@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLocalization } from '../../localization/LocalizationContext';
 
 import { HEADER, translations } from '../../utils/constants';
-import Navigate from '../../pages/Welcome/Navigate';
+import Navigate from '../../components/Navigate/Navigate';
 
 import styles from './Header.module.css';
 

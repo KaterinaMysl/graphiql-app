@@ -23,7 +23,6 @@ export enum characterTypeName {
   special = 'special',
 }
 
-//!!!!!!!!
 export enum editorError {
   query = 'Query does not contain any operations',
   endpoint = 'Endpoint is empty',
