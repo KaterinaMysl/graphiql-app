@@ -22,3 +22,8 @@ export enum characterTypeName {
   lowercase = 'lowercase',
   special = 'special character',
 }
+
+export enum editorError {
+  query = 'Query does not contain any operations',
+  endpoint = 'Endpoint is empty',
+}

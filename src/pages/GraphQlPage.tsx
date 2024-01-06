@@ -36,7 +36,7 @@ const GraphQlPage = () => {
           Welcome to the GraphiQL page! This is where you can interact with your
           GraphQL API.
         </p>
-        <div>
+        <div className={styles.apiUrlContainer}>
           <input type="text" value={inputValue} onChange={handleUrlChange} />
           <button onClick={handleChangeApi}>change api</button>
         </div>

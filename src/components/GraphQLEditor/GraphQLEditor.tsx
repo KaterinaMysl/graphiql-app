@@ -7,6 +7,9 @@ import VariableEditor from '../VariableEditor/VariableEditor';
 import HeaderEditor from '../HeaderEditor/HeaderEditor';
 
 import styles from './GraphQLEditor.module.css';
+import Tabs from '../Tabs/Tabs';
+import { editorError } from '../../validation/constants';
+import { validateQuery } from '../../validation/editor';
 
 export const apiUrl =
   'https://swapi-graphql.netlify.app/.netlify/functions/index';
@@ -21,7 +24,6 @@ export default function GraphQLEditor({ endpoint, schema }: Props) {
   const [variables, setVariables] = useState('');
   const [headers, setHeaders] = useState('');
   const [graphqlResult, setGraphqlResult] = useState<string>('');
-  const [error, setError] = useState('');
 
   const handleQuery = (data: string) => {
     setQuery(data);
@@ -37,29 +39,44 @@ export default function GraphQLEditor({ endpoint, schema }: Props) {
 
   const handleSubmit = async () => {
     try {
+      validateQuery({ query: editorError.query, endpoint: endpoint });
       const response = await getData(query, endpoint, variables, headers);
       if (response && response.data) {
         setGraphqlResult(JSON.stringify(response, null, 2));
       }
     } catch (error) {
       if (error && error instanceof Error) {
-        setError('Something wrong with the Api data');
+        setGraphqlResult(`Something wrong with the query.\n${error}`);
       }
     }
   };
+
+  const tabsContent = [
+    {
+      label: 'Variables',
+      content: (
+        <VariableEditor
+          variables={variables}
+          handleVariables={handleVariables}
+        />
+      ),
+    },
+    {
+      label: 'Headers',
+      content: <HeaderEditor headers={headers} handleHeaders={handleHeaders} />,
+    },
+  ];
 
   return (
     <>
       <div className={styles.editorsContainer}>
         <div className={styles.queryContainer}>
           <QueryEditor schema={schema} handleQuery={handleQuery} />
-          <VariableEditor handleVariables={handleVariables} />
-          <HeaderEditor handleHeaders={handleHeaders} />
+          <Tabs tabs={tabsContent} />
         </div>
         <button onClick={handleSubmit}>Run</button>
         <ResultEditor results={graphqlResult} />
       </div>
-      <div className={styles.error}>{error != '' && error}</div>
     </>
   );
 }

@@ -1,0 +1,27 @@
+.tabList {
+  display: flex;
+}
+
+.tabList button {
+  width: fit-content;
+  margin: 0;
+  border: none;
+  border-radius: unset;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  background-color: unset;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+}
+
+.tabList button.active {
+  color: black;
+}
+
+.hideBtn {
+  display: none;
+}
+
+.showHideBtn {
+  display: block;
+}

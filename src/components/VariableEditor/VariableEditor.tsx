@@ -10,10 +10,11 @@ import { bracketMatching } from '@codemirror/language';
 import styles from './VariableEditor.module.css';
 
 interface Props {
+  variables: string;
   handleVariables: (data: string) => void;
 }
 
-export default function VariableEditor({ handleVariables }: Props) {
+export default function VariableEditor({ variables, handleVariables }: Props) {
   const editor = useRef<HTMLDivElement | null>(null);
 
   const onUpdate = EditorView.updateListener.of((v) => {
@@ -23,7 +24,7 @@ export default function VariableEditor({ handleVariables }: Props) {
 
   useEffect(() => {
     const startState = EditorState.create({
-      doc: '',
+      doc: variables,
 
       extensions: [
         lineNumbers(),
@@ -47,10 +48,5 @@ export default function VariableEditor({ handleVariables }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor]);
 
-  return (
-    <div>
-      <h2>Variables</h2>
-      <div className={styles.editor} ref={editor}></div>;
-    </div>
-  );
+  return <div className={styles.editor} ref={editor}></div>;
 }
