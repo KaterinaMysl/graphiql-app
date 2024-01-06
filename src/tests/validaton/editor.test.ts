@@ -1,7 +1,11 @@
-import { expect, describe, test, vi } from 'vitest';
+import { expect, describe, test } from 'vitest';
 import { mockApiUrl, mockArrQuery } from '../Mocks';
 import { editorError } from '../../validation/constants';
 import { validateQuery, validateQueryParam } from '../../validation/editor';
+
+type QueryParams = {
+  [key in keyof typeof editorError]: string;
+};
 
 describe('Editor validation functions', () => {
   describe('validateQueryParam: if query', () => {
@@ -36,15 +40,13 @@ describe('Editor validation functions', () => {
     });
   });
 
-  describe('validateQuery', () => {
-    test.skip('should call validateQueryParam function for all item', () => {
-      const mockQueryParams = { endpoint: mockApiUrl, query: mockArrQuery };
-
-      const main = { validateQueryParam, validateQuery };
-      const validateQuerySpy = vi.spyOn(main, 'validateQueryParam');
-
-      main.validateQuery(mockQueryParams);
-      expect(validateQuerySpy).toHaveBeenCalled();
+  describe('validateQuery: when all parameters are valid', () => {
+    test('it should not throw an error', () => {
+      const mockQueryParams: QueryParams = {
+        query: mockArrQuery,
+        endpoint: mockApiUrl,
+      };
+      expect(() => validateQuery(mockQueryParams)).not.toThrow();
     });
   });
 });
