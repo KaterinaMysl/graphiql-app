@@ -20,7 +20,12 @@ export enum characterTypeName {
   digit = 'digit',
   uppercase = 'uppercase',
   lowercase = 'lowercase',
-  special = 'special character',
+  special = 'special',
+}
+
+export enum editorError {
+  query = 'Query does not contain any operations',
+  endpoint = 'Endpoint is empty',
 }
 
 export const translatedValidationErrorMessages = {
@@ -70,7 +75,7 @@ export const translatedCharacterTypeName = {
     digit: 'digit',
     uppercase: 'uppercase',
     lowercase: 'lowercase',
-    special: 'special character',
+    special: 'special',
   },
   ru: {
     digit: 'цифровой',

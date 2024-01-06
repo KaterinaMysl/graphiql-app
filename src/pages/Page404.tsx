@@ -1,8 +1,8 @@
-import styles from './Page404.module.css';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocalization } from '../localization/LocalizationContext';
 import { translations } from '../utils/constants';
+
+import styles from './Page404.module.css';
 
 const Page404 = () => {
   const { lang } = useLocalization();

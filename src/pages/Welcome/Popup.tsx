@@ -1,7 +1,8 @@
 import { TeamDetails } from '../../utils/types';
-import styles from './Popup.module.css';
-import { useLocalization } from '../../localization/LocalizationContext';
 import { translations } from '../../utils/constants';
+import { useLocalization } from '../../localization/LocalizationContext';
+
+import styles from './Popup.module.css';
 
 type PopupProps = {
   onClick: () => void;

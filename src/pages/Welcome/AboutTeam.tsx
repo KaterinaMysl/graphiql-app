@@ -1,8 +1,9 @@
-import styles from './AboutTeam.module.css';
 import { AboutTeamType } from '../../utils/types';
 import { translations } from '../../utils/constants';
-import Team from './Team';
 import { useLocalization } from '../../localization/LocalizationContext';
+import Team from './Team';
+
+import styles from './AboutTeam.module.css';
 
 type AboutTeamProps = {
   data: AboutTeamType[];

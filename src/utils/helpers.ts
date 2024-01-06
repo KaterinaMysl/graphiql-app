@@ -1,7 +1,9 @@
 import {
   PasswordStrengthRequirements,
+  characterTypeName,
   characterValidationErrorParts,
   maxPasswordStrength,
+  translatedCharacterTypeName,
 } from '../validation/constants';
 import { Lang, Strength } from './types';
 
@@ -54,5 +56,13 @@ export const convertUnicodeToChar = (unicodeStr: string): string => {
   return String.fromCharCode(code);
 };
 
-export const getCharacterValidationError = (type: string, lang: Lang) =>
-  `${characterValidationErrorParts[lang][0]}${type}${characterValidationErrorParts[lang][1]}`;
+export const getCharacterValidationError = (
+  type: keyof typeof characterTypeName,
+  lang: Lang
+) => {
+  const typeName = translatedCharacterTypeName[lang][type];
+  const firstPart = characterValidationErrorParts[lang][0];
+  const lastPart = characterValidationErrorParts[lang][1];
+
+  return `${firstPart}${typeName}${lastPart}`;
+};

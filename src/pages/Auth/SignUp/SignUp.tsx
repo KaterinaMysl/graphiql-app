@@ -10,8 +10,11 @@ import {
 } from '../../../utils/helpers';
 import { Strength } from '../../../utils/types';
 import { AuthInfo, authInfoSchema } from '../../../validation/form.schema';
+import {
+  translatedValidations,
+  characterTypeName,
+} from '../../../validation/constants';
 import PasswordInput from '../../../components/PasswordInput/PasswordInput';
-import { translatedValidations } from '../../../validation/constants';
 
 import styles from './SignUp.module.css';
 
@@ -34,7 +37,7 @@ const SignUp = () => {
     reset,
     watch,
     control,
-    formState: { errors, isValid },
+    formState: { errors, isValid, dirtyFields },
   } = useForm<AuthInfo>({
     defaultValues: initialAuthInfo,
     resolver: yupResolver(authInfoSchema),
@@ -59,7 +62,7 @@ const SignUp = () => {
   };
 
   const showError = useCallback(
-    (messagePath: string) =>
+    (messagePath: string): string =>
       messagePath
         .split('.')
         .reduce(
@@ -74,7 +77,8 @@ const SignUp = () => {
       const pathArr = messagePath.split('.');
 
       if (pathArr.length === 1) {
-        return getCharacterValidationError(messagePath, lang);
+        const characterype = messagePath as keyof typeof characterTypeName;
+        return getCharacterValidationError(characterype, lang);
       }
 
       return showError(messagePath);
@@ -96,21 +100,27 @@ const SignUp = () => {
         placeholder={translatedConstants.SIGN_UP.email}
       />
       <p>{errors.email?.message && showError(errors.email.message)}</p>
-      <PasswordInput
+      <PasswordInput<AuthInfo>
         control={control}
         name="password"
         placeholder={translatedConstants.SIGN_UP.password}
       />
-      <p className={styles.green}>
-        {translatedConstants.SIGN_UP.strength}{' '}
-        <strong>
-          {validationConstants.passwordStrength[passwordStrength]}
-        </strong>
+      <p
+        className={passwordStrength === 'strong' ? styles.strong : styles.poor}
+      >
+        {dirtyFields.password && (
+          <span>
+            {translatedConstants.SIGN_UP.strength}{' '}
+            <strong>
+              {validationConstants.passwordStrength[passwordStrength]}
+            </strong>
+          </span>
+        )}
       </p>
       <p>
         {errors.password?.message && showPasswordError(errors.password.message)}
       </p>
-      <PasswordInput
+      <PasswordInput<AuthInfo>
         control={control}
         name="confirmPassword"
         placeholder={translatedConstants.SIGN_UP.confirm}

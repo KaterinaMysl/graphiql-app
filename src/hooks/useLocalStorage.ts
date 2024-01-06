@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-type LocalStorageHook<T> = [T, (newValue: T) => void];
+type LocalStorageHook<T> = readonly [T, (newValue: T) => void];
 
 export function useLocalStorage<T>(
   keyName: string,

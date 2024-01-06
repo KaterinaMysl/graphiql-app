@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import RSS from './RSS';
 import { translations } from '../../utils/constants';
+import { useLocalization } from '../../localization/LocalizationContext';
+
 import AboutTeam from './AboutTeam';
 import Popup from './Popup';
 import AboutProject from './AboutProject';
+import RSS from './RSS';
+
 import styles from './WelcomePage.module.css';
-import { useLocalization } from '../../localization/LocalizationContext';
 
 const WelcomePage = () => {
   const [isDetailsOpen, setIsDetailsOpen] = useState(false);

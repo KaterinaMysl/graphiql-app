@@ -1,0 +1,8 @@
+.tabsContainer {
+  margin: 0 20px;
+}
+@media only screen and (width <= 600px) {
+  .tabsContainer {
+    margin: 0 auto;
+  }
+}

@@ -21,6 +21,7 @@ import {
   characterTypeName,
   characterValidationErrorParts,
   maxPasswordStrength,
+  translatedCharacterTypeName,
 } from '../validation/constants';
 import { Lang, Strength } from '../utils/types';
 
@@ -156,18 +157,23 @@ describe('Helpers functions', () => {
     });
   });
 
-  const checkValidationErrorByTypeLang = (type: string, lang: Lang) => {
+  const checkValidationErrorByTypeLang = (
+    type: keyof typeof characterTypeName,
+    lang: Lang
+  ) => {
     test(`should return validation ${lang} error message about ${type}`, () => {
+      const typeName = translatedCharacterTypeName[lang][type];
       const error = getCharacterValidationError(type, lang);
-      const expectErrorText = `${characterValidationErrorParts[lang][0]}${type}${characterValidationErrorParts[lang][1]}`;
+      const expectErrorText = `${characterValidationErrorParts[lang][0]}${typeName}${characterValidationErrorParts[lang][1]}`;
       expect(error).toBe(expectErrorText);
     });
   };
 
   describe('Form schema', () => {
     Object.keys(characterTypeName).map((key) => {
-      checkValidationErrorByTypeLang(key, 'ru');
-      checkValidationErrorByTypeLang(key, 'en');
+      const keyType = key as keyof typeof characterTypeName;
+      checkValidationErrorByTypeLang(keyType, 'ru');
+      checkValidationErrorByTypeLang(keyType, 'en');
     });
   });
 

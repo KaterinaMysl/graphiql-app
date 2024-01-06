@@ -2,18 +2,19 @@ import { Link } from 'react-router-dom';
 
 import { useAppDispatch } from '../../redux/hook';
 import { unsetToken } from '../../redux/slices/tokenSlice';
+import useToken from '../../hooks/useToken';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useLocalization } from '../../localization/LocalizationContext';
 import {
   ROUTE_PATH,
   translations,
   TOKEN_TITLE,
   emptyToken,
 } from '../../utils/constants';
-import { logout } from '../../services/firebase';
-import useToken from '../../hooks/useToken';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { Token } from '../../utils/types';
+import { logout } from '../../services/firebase';
+
 import styles from './Navigate.module.css';
-import { useLocalization } from '../../localization/LocalizationContext';
 
 const Navigate = () => {
   const dispatch = useAppDispatch();

@@ -1,9 +1,9 @@
+import { Link } from 'react-router-dom';
 import ReactPlayer from 'react-player';
-
 import { translations, ROUTE_PATH } from '../../utils/constants';
 import { useLocalization } from '../../localization/LocalizationContext';
+
 import styles from './AboutProject.module.css';
-import { Link } from 'react-router-dom';
 
 const AboutProject = () => {
   const { lang } = useLocalization();

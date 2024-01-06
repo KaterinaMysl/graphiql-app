@@ -1,5 +1,9 @@
 import { useState, KeyboardEvent, FocusEvent } from 'react';
-import { UseControllerProps, useController } from 'react-hook-form';
+import {
+  FieldValues,
+  UseControllerProps,
+  useController,
+} from 'react-hook-form';
 
 import styles from './PasswordInput.module.css';
 import { convertUnicodeToChar } from '../../utils/helpers';
@@ -18,7 +22,9 @@ interface Props {
   placeholder: string;
 }
 
-export default function PasswordInput(props: UseControllerProps & Props) {
+export default function PasswordInput<T extends FieldValues>(
+  props: UseControllerProps<T> & Props
+) {
   const { field } = useController(props);
 
   const [lastInput, setLastInput] = useState('');

@@ -1,21 +1,16 @@
 import { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { useLocalization } from '../../../localization/LocalizationContext';
-
 import {
   sigInWithEmailAndPassword,
   signInWithGoogle,
 } from '../../../services/firebase';
 import { translations, ROUTE_PATH } from '../../../utils/constants';
+import { SignInForm } from '../../../utils/types';
+import PasswordInput from '../../../components/PasswordInput/PasswordInput';
 
 import styles from './SignIn.module.css';
-import PasswordInput from '../../../components/PasswordInput/PasswordInput';
-import { SubmitHandler, useForm } from 'react-hook-form';
-
-interface SignInForm {
-  email: string;
-  password: string;
-}
 
 const initialFormValues: SignInForm = { email: '', password: '' };
 
@@ -51,7 +46,7 @@ const SignIn = () => {
         {...register('email')}
         placeholder={translatedConstants.SIGN_IN.email}
       />
-      <PasswordInput
+      <PasswordInput<SignInForm>
         control={control}
         name="password"
         placeholder={translatedConstants.SIGN_IN.password}
