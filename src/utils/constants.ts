@@ -112,7 +112,7 @@ export const translations = {
       page404: '*',
     },
     LINK_NAME: {
-      graphQl: 'GraphQl',
+      graphQl: 'Main Page',
       login: 'Sign In',
       registration: 'Sign Up',
       logout: 'Logout',
@@ -296,7 +296,7 @@ export const translations = {
       page404: '*',
     },
     LINK_NAME: {
-      graphQl: 'GraphQl',
+      graphQl: 'Главная',
       login: 'Войти',
       registration: 'Регистрация',
       logout: 'Выйти',
