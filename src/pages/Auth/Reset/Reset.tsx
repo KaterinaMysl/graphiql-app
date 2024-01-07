@@ -40,9 +40,7 @@ const Reset = () => {
   };
 
   const onSubmitHandler: SubmitHandler<Email> = async ({ email }: Email) => {
-    console.log('in reset');
     try {
-      console.log('in reset');
       await sendPasswordReset(email);
       navigate(ROUTE_PATH.welcome);
     } catch (err) {

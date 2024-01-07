@@ -10,7 +10,7 @@ import {
 
 export const authInfoSchema = object({
   name: string()
-    .matches(/^[A-Z][a-z]+/, {
+    .matches(/^([A-Z]|[А-Я])([a-z]|[а-я])+/, {
       excludeEmptyString: true,
       message: 'validationErrorMessages.name.pattern',
     })

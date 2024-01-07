@@ -19,7 +19,7 @@ export const getData = async (
   });
 
   if (!response.ok) {
-    throw new Error(`Network error: ${response.statusText}`);
+    throw new Error(`Network error ${response.statusText}`);
   }
 
   const result = await response.json();

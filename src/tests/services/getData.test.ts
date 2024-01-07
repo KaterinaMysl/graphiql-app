@@ -51,7 +51,7 @@ describe('Data from API', () => {
 
     test('should throw error message if result return error', async () => {
       const mockError = 'response Error';
-      const expectedError = new Error('Network error: response Error');
+      const expectedError = new Error('Network error response Error');
 
       const mockResolveValue = {
         ok: false,
