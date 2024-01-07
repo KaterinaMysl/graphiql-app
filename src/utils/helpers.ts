@@ -15,7 +15,6 @@ export const isTokenNotExpired = (expirationTime: string): boolean => {
   return is;
 };
 
-// TODO:  if token from localstorage how to check validation
 export const isTokenValid = (token: string): boolean => {
   return token !== '';
 };
