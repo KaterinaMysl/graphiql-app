@@ -1,6 +1,7 @@
 import { expect, describe, test } from 'vitest';
 import '@testing-library/jest-dom';
-import { fireEvent, screen } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
+import { screen, waitFor } from '@testing-library/react';
 import renderWithProviders from '../renderTest';
 import { translations } from '../../utils/constants';
 import SignUp from '../../pages/Auth/SignUp/SignUp';
@@ -20,8 +21,11 @@ describe('SignUp component', () => {
     const mockEmail = 'some@email.com';
     renderWithProviders(<SignUp />);
 
+    const user = userEvent.setup();
     const emailInput = screen.getByPlaceholderText('Email') as HTMLInputElement;
-    fireEvent.change(emailInput, { target: { value: mockEmail } });
+
+    await waitFor(() => user.type(emailInput, mockEmail));
+
     expect(emailInput.value).toBe(mockEmail);
   });
 });

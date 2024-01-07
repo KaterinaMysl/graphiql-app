@@ -1,6 +1,6 @@
 import { expect, describe, test } from 'vitest';
 import '@testing-library/jest-dom';
-import { fireEvent, screen } from '@testing-library/react';
+import { act, fireEvent, screen } from '@testing-library/react';
 import renderWithProviders from '../renderTest';
 import { translations } from '../../utils/constants';
 import SignIn from '../../pages/Auth/SignIn/SignIn';
@@ -30,9 +30,13 @@ describe('SignIn component', () => {
   test('should change email if user input text', async () => {
     const mockEmail = 'some@email.com';
     renderWithProviders(<SignIn />);
+    act(() => {
+      const emailInput = screen.getByPlaceholderText(
+        'Email'
+      ) as HTMLInputElement;
 
-    const emailInput = screen.getByPlaceholderText('Email') as HTMLInputElement;
-    fireEvent.change(emailInput, { target: { value: mockEmail } });
-    expect(emailInput.value).toBe(mockEmail);
+      fireEvent.change(emailInput, { target: { value: mockEmail } });
+      expect(emailInput.value).toBe(mockEmail);
+    });
   });
 });

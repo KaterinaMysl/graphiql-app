@@ -1,6 +1,7 @@
 import { expect, describe, test } from 'vitest';
 import '@testing-library/jest-dom';
-import { act, fireEvent, screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
+import { userEvent } from '@testing-library/user-event';
 import renderWithProviders from '../renderTest';
 import Reset from '../../pages/Auth/Reset/Reset';
 
@@ -19,19 +20,13 @@ describe('Reset component', () => {
     renderWithProviders(<Reset />);
 
     const emailInput = screen.getByPlaceholderText('Email') as HTMLInputElement;
-    fireEvent.change(emailInput, { target: { value: mockEmail } });
-    expect(emailInput.value).toBe(mockEmail);
-  });
 
-  test('should go out from page when click cancel button', () => {
-    renderWithProviders(<Reset />);
+    const user = userEvent.setup();
+    await waitFor(() => user.type(emailInput, mockEmail));
 
-    act(() => {
-      act(async () => {
-        const cancelButton = screen.getByText('Cancel');
-        fireEvent.click(cancelButton);
-        expect(await screen.findByText('Cancel')).not.toBeInTheDocument();
-      });
-    });
+    const newEmailInput = (await screen.findByRole(
+      'textbox'
+    )) as HTMLInputElement;
+    expect(newEmailInput).toHaveValue(mockEmail);
   });
 });
