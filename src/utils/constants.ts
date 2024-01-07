@@ -30,6 +30,76 @@ export const HEADER = {
 
 export const initialApi = 'https://rickandmortyapi.com/graphql';
 
+export const signInFirebaseErrors = {
+  invalidEmail: 'Firebase: Error (auth/invalid-email).',
+  userDisabled: 'Firebase: Error (auth/user-disabled).',
+  userNotFound: 'Firebase: Error (auth/user-not-found).',
+  wrongPassword: 'Firebase: Error (auth/wrong-password).',
+};
+const translatedSignInFirebaseErrors = {
+  en: {
+    [signInFirebaseErrors.invalidEmail]: signInFirebaseErrors.invalidEmail,
+    [signInFirebaseErrors.userDisabled]: signInFirebaseErrors.userDisabled,
+    [signInFirebaseErrors.userNotFound]: signInFirebaseErrors.userNotFound,
+    [signInFirebaseErrors.wrongPassword]: signInFirebaseErrors.wrongPassword,
+  },
+  ru: {
+    [signInFirebaseErrors.invalidEmail]: 'Ошибка Firebase: неправильный email',
+    [signInFirebaseErrors.userDisabled]:
+      'Ошибка Firebase: пользователь заблокирован',
+    [signInFirebaseErrors.userNotFound]:
+      'Ошибка Firebase: пользователь не существует',
+    [signInFirebaseErrors.wrongPassword]:
+      'Ошибка Firebase: неправильный пароль',
+  },
+};
+
+export const signUpFirebaseErrors = {
+  emailAlreadyInUse: 'Firebase: Error (auth/email-already-in-use).',
+  invalidEmail: 'Firebase: Error (auth/invalid-email).',
+  operationNotAllowed: 'Firebase: Error (auth/operation-not-allowed).',
+  weakPassword: 'Firebase: Error (auth/weak-password).',
+};
+
+const translatedsignUpFirebaseErrors = {
+  en: {
+    [signUpFirebaseErrors.emailAlreadyInUse]:
+      signUpFirebaseErrors.emailAlreadyInUse,
+    [signUpFirebaseErrors.invalidEmail]: signUpFirebaseErrors.invalidEmail,
+    [signUpFirebaseErrors.operationNotAllowed]:
+      signUpFirebaseErrors.operationNotAllowed,
+    [signUpFirebaseErrors.weakPassword]: signUpFirebaseErrors.weakPassword,
+  },
+  ru: {
+    [signUpFirebaseErrors.emailAlreadyInUse]:
+      'Ошибка Firebase: email уже используется',
+    [signUpFirebaseErrors.invalidEmail]: 'Ошибка Firebase: неправильный email',
+    [signUpFirebaseErrors.operationNotAllowed]:
+      'Ошибка Firebase: действие запрещено',
+    [signUpFirebaseErrors.weakPassword]: 'Ошибка Firebase: слабый пароль',
+  },
+};
+
+export const resetFirebaseErrors = {
+  invalidEmail: 'Firebase: Error (auth/invalid-email)',
+  userNotFound: 'Firebase: Error (auth/user-not-found)',
+  missingEmail: 'Firebase: Error (auth/missing-email).',
+};
+
+const translatedResetFirebaseErrors = {
+  en: {
+    [resetFirebaseErrors.invalidEmail]: resetFirebaseErrors.invalidEmail,
+    [resetFirebaseErrors.userNotFound]: resetFirebaseErrors.userNotFound,
+    [resetFirebaseErrors.missingEmail]: resetFirebaseErrors.missingEmail,
+  },
+  ru: {
+    [resetFirebaseErrors.invalidEmail]: 'Ошибка Firebase: неправильный email',
+    [resetFirebaseErrors.userNotFound]:
+      'Ошибка Firebase: пользователь не существует',
+    [resetFirebaseErrors.missingEmail]: 'Ошибка Firebase: пустой email',
+  },
+};
+
 export const translations = {
   en: {
     ROUTE_PATH: {
@@ -59,6 +129,7 @@ export const translations = {
       forget: 'Forgot Password?',
       not: 'Do not have an account?',
       now: 'now.',
+      firebaseErrors: translatedSignInFirebaseErrors.en,
     },
     SIGN_UP: {
       email: 'Email',
@@ -68,6 +139,7 @@ export const translations = {
       confirm: 'Confirm password',
       strength: 'Your password strength is',
       enter: 'Enter name',
+      firebaseErrors: translatedsignUpFirebaseErrors.en,
     },
     TOKEN_TITLE: 'PIX_token',
     emptyToken: {
@@ -109,8 +181,10 @@ export const translations = {
       cancel: 'Cancel',
       reset: 'Reset',
       email: 'Email',
+      firebaseErrors: translatedResetFirebaseErrors.en,
     },
     ABOUT_PROJECT_CONTENT: {
+      graphQLLink: 'GraphQL Explained in 100 Seconds',
       video:
         'https://www.youtube.com/watch?v=eIQh02xuVw4&t=2s&ab_channel=Fireship',
       title: 'About our project',
@@ -183,7 +257,8 @@ export const translations = {
           english: 'B1+',
           skills:
             'HTML, CSS/SASS, JS, TS, React, Angular, NodeJS, GIT/GitHub/GitLab, VS Code, WebPack, Figma, Photoshop',
-          contribution: ``,
+          contribution: `Halina is a lover of understanding something new, clean code and, as it turns out, tests.
+          And as a result, she paid attention to firebase authorization, made a little magic with editors and enjoyed writing all kinds of tests`,
           githubIcon: github,
           githubLink: 'https://github.com/halinapp',
         },
@@ -238,6 +313,7 @@ export const translations = {
       forget: 'Забыли пароль?',
       not: 'Еще не регистрировались?',
       now: 'сейчас.',
+      firebaseErrors: translatedSignInFirebaseErrors.ru,
     },
     SIGN_UP: {
       email: 'Почта',
@@ -247,6 +323,7 @@ export const translations = {
       confirm: 'Подтвердить пароль',
       strength: 'Сила вашего пароля',
       enter: 'Введите имя',
+      firebaseErrors: translatedsignUpFirebaseErrors.ru,
     },
     TOKEN_TITLE: 'PIX_токен',
     emptyToken: {
@@ -288,8 +365,10 @@ export const translations = {
       cancel: 'Отменить',
       reset: 'Сброс',
       email: 'Почта',
+      firebaseErrors: translatedResetFirebaseErrors.ru,
     },
     ABOUT_PROJECT_CONTENT: {
+      graphQLLink: 'GraphQL за 100 секунд',
       video:
         'https://www.youtube.com/watch?v=eIQh02xuVw4&t=2s&ab_channel=Fireship',
       title: 'О нашем проекте',
@@ -352,7 +431,7 @@ export const translations = {
         button: 'Подробнее...',
         details: {
           name: 'Галина Пищало',
-          avatar: '',
+          avatar: avatar2,
           aboutMe: `Я бы хотела работать с Реакт проектами в качестве фулстек разработчика и использовать мои новые приобретенные знания за последнее время.
           Я высоко мотивированная и трудолюбивая. 
           Я могу работать как в команде так и в одиночку, но все-таки предпочитаю командную работу, 
@@ -362,7 +441,8 @@ export const translations = {
           english: 'B1+',
           skills:
             'HTML, CSS/SASS, JS, TS, React, Angular, NodeJS, GIT/GitHub/GitLab, VS Code, WebPack, Figma, Photoshop',
-          contribution: ``,
+          contribution: `Галина любительница разобраться в чем-то новеньком, чистого кода и как оказалось тестов. 
+            И как итог - уделила внимание firebase авторизации, немного поколдовала с редакторами и получала удовольствие от написания всевозможных тестов`,
           githubIcon: github,
           githubLink: 'https://github.com/halinapp',
         },

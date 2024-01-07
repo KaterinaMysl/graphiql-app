@@ -1,7 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
-import tokenSlice from '../slices/tokenSlice';
+import authSlice from '../slices/authSlice';
 
 export const rootReducer = combineReducers({
-  tokenSlice,
+  authSlice,
 });

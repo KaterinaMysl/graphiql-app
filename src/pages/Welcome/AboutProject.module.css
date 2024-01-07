@@ -115,6 +115,11 @@
   height: 400px !important;
 }
 
+.videoImg {
+  width: 100%;
+  max-width: 520px;
+}
+
 @media only screen and (width <= 980px) {
   .container {
     height: auto;

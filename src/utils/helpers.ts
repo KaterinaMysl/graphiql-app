@@ -5,7 +5,7 @@ import {
   maxPasswordStrength,
   translatedCharacterTypeName,
 } from '../validation/constants';
-import { Lang, Strength } from './types';
+import { Lang, Strength, ValidationConstants } from './types';
 
 export const isTokenNotExpired = (expirationTime: string): boolean => {
   const time = new Date(expirationTime);
@@ -66,3 +66,12 @@ export const getCharacterValidationError = (
 
   return `${firstPart}${typeName}${lastPart}`;
 };
+
+export const getErrorByPath = (
+  messagePath: string,
+  validationConstants: ValidationConstants
+): string =>
+  messagePath
+    .split('.')
+    .reduce((curr, pathPart) => curr[pathPart], validationConstants)
+    .toString();

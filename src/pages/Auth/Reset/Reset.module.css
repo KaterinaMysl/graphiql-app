@@ -14,6 +14,13 @@
   font-size: 18px;
 }
 
+.form p {
+  text-align: center;
+  font-size: 12px;
+  color: #b22121;
+  margin: 10px 0 15px;
+}
+
 .buttons__container {
   display: flex;
   justify-content: center;

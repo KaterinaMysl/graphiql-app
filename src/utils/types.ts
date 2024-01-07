@@ -23,6 +23,10 @@ export type Token = {
   expirationTime: string;
 };
 
+export type Auth = Token & {
+  error: string;
+};
+
 export enum Strength {
   poor = 'poor',
   medium = 'medium',
@@ -53,4 +57,25 @@ export interface Schema {
 export interface SignInForm extends FieldValues {
   email: string;
   password: string;
+}
+
+export type ValidationError = {
+  pattern: string;
+  required: string;
+};
+
+export type validationErrorMessages = {
+  name: ValidationError;
+  email: ValidationError;
+  password: Pick<ValidationError, 'required'>;
+  confirmPassword: ValidationError;
+};
+
+export interface ValidationConstants {
+  validationErrorMessages: validationErrorMessages;
+  passwordStrength: {
+    poor: string;
+    medium: string;
+    strong: string;
+  };
 }

@@ -7,6 +7,7 @@ import svgr from 'vite-plugin-svgr';
 export default defineConfig({
   base: '/React-Component/',
   plugins: [tsconfigPaths(), react(), svgr()],
+  envPrefix: 'PIX_',
   test: {
     coverage: {
       all: true,

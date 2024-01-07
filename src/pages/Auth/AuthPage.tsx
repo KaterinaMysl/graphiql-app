@@ -4,7 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 import { auth } from '../../services/firebase';
 import { useAppDispatch } from '../../redux/hook';
-import { setToken } from '../../redux/slices/tokenSlice';
+import { setToken } from '../../redux/slices/authSlice';
 import { ROUTE_PATH, TOKEN_TITLE, emptyToken } from '../../utils/constants';
 import { Token } from '../../utils/types';
 import { useLocalStorage } from '../../hooks/useLocalStorage';

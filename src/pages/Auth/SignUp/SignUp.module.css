@@ -14,15 +14,14 @@
 }
 
 .form p {
-  height: 12px;
-  text-align: left;
+  text-align: center;
   font-size: 12px;
-  color: red;
+  color: #b22121;
   margin: 10px 0 15px;
 }
 
 .form p.strong {
-  color: green;
+  color: rgb(1, 94, 1);
   margin: 10px 0 0;
 }
 

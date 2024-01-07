@@ -7,12 +7,23 @@ import { ROUTE_PATH, translations } from '../../../utils/constants';
 import { Email, emailSchema } from '../../../validation/form.schema';
 import { useLocalization } from '../../../localization/LocalizationContext';
 
+import { useCallback } from 'react';
+import { getErrorByPath } from '../../../utils/helpers';
+import { translatedValidations } from '../../../validation/constants';
+
+import { setError } from '../../../redux/slices/authSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/hook';
+import { RootState } from '../../../redux/store';
+
 import styles from './Reset.module.css';
 
 const Reset = () => {
+  const { error } = useAppSelector((state: RootState) => state.authSlice);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { lang } = useLocalization();
   const translatedConstants = translations[lang];
+  const validationConstants = translatedValidations[lang];
 
   const {
     register,
@@ -28,9 +39,21 @@ const Reset = () => {
     navigate(`${ROUTE_PATH.auth}/${ROUTE_PATH.login}`);
   };
 
-  const onSubmitHandler: SubmitHandler<Email> = ({ email }: Email) => {
-    sendPasswordReset(email);
+  const onSubmitHandler: SubmitHandler<Email> = async ({ email }: Email) => {
+    try {
+      await sendPasswordReset(email);
+      navigate(ROUTE_PATH.welcome);
+    } catch (err) {
+      if (err instanceof Error) {
+        dispatch(setError(err.message));
+      }
+    }
   };
+
+  const showError = useCallback(
+    (messagePath: string) => getErrorByPath(messagePath, validationConstants),
+    [validationConstants]
+  );
 
   return (
     <form className={styles.form} onSubmit={handleSubmit(onSubmitHandler)}>
@@ -39,7 +62,7 @@ const Reset = () => {
         {...register('email')}
         placeholder={translatedConstants.RESET.email}
       />
-      <p>{errors.email?.message}</p>
+      <p>{errors.email?.message && showError(errors.email.message)}</p>
       <div className={styles.buttons__container}>
         <button className={styles.cancel__btn} onClick={handleCancel}>
           {translatedConstants.RESET.cancel}
@@ -49,6 +72,7 @@ const Reset = () => {
           {translatedConstants.RESET.reset}
         </button>
       </div>
+      <p>{translatedConstants.RESET.firebaseErrors[error]}</p>
     </form>
   );
 };

@@ -59,6 +59,7 @@ module.exports = {
         moduleDirectory: ['node_modules', 'src'],
       },
     },
+    'import/ignore': ['/*.png/', '/*.jpg/'],
     react: {
       pragma: 'React',
       version: 'detect',

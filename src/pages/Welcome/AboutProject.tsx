@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import ReactPlayer from 'react-player';
 import { translations, ROUTE_PATH } from '../../utils/constants';
 import { useLocalization } from '../../localization/LocalizationContext';
+import video from '../../assets/img/png/video.png';
 
 import styles from './AboutProject.module.css';
 
@@ -29,10 +29,17 @@ const AboutProject = () => {
               </div>
             </div>
             <div className={styles.video}>
-              <ReactPlayer
-                url={translatedConstants.ABOUT_PROJECT_CONTENT.video}
-                controls
-              />
+              <a
+                href={translatedConstants.ABOUT_PROJECT_CONTENT.video}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  className={styles.videoImg}
+                  src={video}
+                  alt={translatedConstants.ABOUT_PROJECT_CONTENT.graphQLLink}
+                />
+              </a>
             </div>
           </div>
         </div>

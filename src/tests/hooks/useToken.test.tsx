@@ -5,7 +5,7 @@ import { renderHook } from '@testing-library/react';
 
 import useToken from '../../hooks/useToken';
 import { setupStore } from '../../redux/store';
-import { setToken } from '../../redux/slices/tokenSlice';
+import { setToken } from '../../redux/slices/authSlice';
 import {
   fakeExpiredToken,
   fakeNotExpiredToken,

@@ -7,7 +7,7 @@ const useToken = (initialIsToken: boolean = false) => {
   const [isToken, setIsToken] = useState(initialIsToken);
 
   const { accessToken, expirationTime } = useAppSelector(
-    (state: RootState) => state.tokenSlice
+    (state: RootState) => state.authSlice
   );
 
   useEffect(() => {
