@@ -23,6 +23,10 @@ export type Token = {
   expirationTime: string;
 };
 
+export type Auth = Token & {
+  error: string;
+};
+
 export enum Strength {
   poor = 'poor',
   medium = 'medium',

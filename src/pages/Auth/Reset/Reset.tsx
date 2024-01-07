@@ -11,9 +11,15 @@ import { useCallback } from 'react';
 import { getErrorByPath } from '../../../utils/helpers';
 import { translatedValidations } from '../../../validation/constants';
 
+import { setError } from '../../../redux/slices/authSlice';
+import { useAppDispatch, useAppSelector } from '../../../redux/hook';
+import { RootState } from '../../../redux/store';
+
 import styles from './Reset.module.css';
 
 const Reset = () => {
+  const { error } = useAppSelector((state: RootState) => state.authSlice);
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { lang } = useLocalization();
   const translatedConstants = translations[lang];
@@ -33,8 +39,15 @@ const Reset = () => {
     navigate(`${ROUTE_PATH.auth}/${ROUTE_PATH.login}`);
   };
 
-  const onSubmitHandler: SubmitHandler<Email> = ({ email }: Email) => {
-    sendPasswordReset(email);
+  const onSubmitHandler: SubmitHandler<Email> = async ({ email }: Email) => {
+    try {
+      await sendPasswordReset(email);
+      navigate(ROUTE_PATH.welcome);
+    } catch (err) {
+      if (err instanceof Error) {
+        dispatch(setError(err.message));
+      }
+    }
   };
 
   const showError = useCallback(
@@ -59,6 +72,7 @@ const Reset = () => {
           {translatedConstants.RESET.reset}
         </button>
       </div>
+      <p>{translatedConstants.RESET.firebaseErrors[error]}</p>
     </form>
   );
 };

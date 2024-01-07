@@ -15,6 +15,11 @@ import {
   translatedValidations,
   characterTypeName,
 } from '../../../validation/constants';
+
+import { useAppDispatch, useAppSelector } from '../../../redux/hook';
+import { RootState } from '../../../redux/store';
+import { setError } from '../../../redux/slices/authSlice';
+
 import PasswordInput from '../../../components/PasswordInput/PasswordInput';
 
 import styles from './SignUp.module.css';
@@ -27,6 +32,11 @@ const initialAuthInfo: AuthInfo = {
 };
 
 const SignUp = () => {
+  const { error: signUpError } = useAppSelector(
+    (state: RootState) => state.authSlice
+  );
+  const dispatch = useAppDispatch();
+
   const { lang } = useLocalization();
   const translatedConstants = translations[lang];
   const validationConstants = translatedValidations[lang];
@@ -54,12 +64,18 @@ const SignUp = () => {
 
   const handleReset = () => reset();
 
-  const onSubmitHandler: SubmitHandler<AuthInfo> = ({
+  const onSubmitHandler: SubmitHandler<AuthInfo> = async ({
     name,
     email,
     password,
   }: AuthInfo) => {
-    registerWithEmailAndPassword(name, email, password);
+    try {
+      await registerWithEmailAndPassword(name, email, password);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        dispatch(setError(err.message));
+      }
+    }
   };
 
   const showError = useCallback(
@@ -136,6 +152,7 @@ const SignUp = () => {
           {translatedConstants.SIGN_UP.signUP}
         </button>
       </div>
+      <p>{translatedConstants.SIGN_UP.firebaseErrors[signUpError]}</p>
     </form>
   );
 };

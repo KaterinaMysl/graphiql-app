@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { useAppDispatch } from '../../redux/hook';
-import { unsetToken } from '../../redux/slices/tokenSlice';
+import { unsetToken } from '../../redux/slices/authSlice';
 import useToken from '../../hooks/useToken';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useLocalization } from '../../localization/LocalizationContext';

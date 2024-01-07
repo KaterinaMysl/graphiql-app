@@ -30,6 +30,76 @@ export const HEADER = {
 
 export const initialApi = 'https://rickandmortyapi.com/graphql';
 
+export const signInFirebaseErrors = {
+  invalidEmail: 'Firebase: Error (auth/invalid-email).',
+  userDisabled: 'Firebase: Error (auth/user-disabled).',
+  userNotFound: 'Firebase: Error (auth/user-not-found).',
+  wrongPassword: 'Firebase: Error (auth/wrong-password).',
+};
+const translatedSignInFirebaseErrors = {
+  en: {
+    [signInFirebaseErrors.invalidEmail]: signInFirebaseErrors.invalidEmail,
+    [signInFirebaseErrors.userDisabled]: signInFirebaseErrors.userDisabled,
+    [signInFirebaseErrors.userNotFound]: signInFirebaseErrors.userNotFound,
+    [signInFirebaseErrors.wrongPassword]: signInFirebaseErrors.wrongPassword,
+  },
+  ru: {
+    [signInFirebaseErrors.invalidEmail]: 'Ошибка Firebase: неправильный email',
+    [signInFirebaseErrors.userDisabled]:
+      'Ошибка Firebase: пользователь заблокирован',
+    [signInFirebaseErrors.userNotFound]:
+      'Ошибка Firebase: пользователь не существует',
+    [signInFirebaseErrors.wrongPassword]:
+      'Ошибка Firebase: неправильный пароль',
+  },
+};
+
+export const signUpFirebaseErrors = {
+  emailAlreadyInUse: 'Firebase: Error (auth/email-already-in-use).',
+  invalidEmail: 'Firebase: Error (auth/invalid-email).',
+  operationNotAllowed: 'Firebase: Error (auth/operation-not-allowed).',
+  weakPassword: 'Firebase: Error (auth/weak-password).',
+};
+
+const translatedsignUpFirebaseErrors = {
+  en: {
+    [signUpFirebaseErrors.emailAlreadyInUse]:
+      signUpFirebaseErrors.emailAlreadyInUse,
+    [signUpFirebaseErrors.invalidEmail]: signUpFirebaseErrors.invalidEmail,
+    [signUpFirebaseErrors.operationNotAllowed]:
+      signUpFirebaseErrors.operationNotAllowed,
+    [signUpFirebaseErrors.weakPassword]: signUpFirebaseErrors.weakPassword,
+  },
+  ru: {
+    [signUpFirebaseErrors.emailAlreadyInUse]:
+      'Ошибка Firebase: email уже используется',
+    [signUpFirebaseErrors.invalidEmail]: 'Ошибка Firebase: неправильный email',
+    [signUpFirebaseErrors.operationNotAllowed]:
+      'Ошибка Firebase: действие запрещено',
+    [signUpFirebaseErrors.weakPassword]: 'Ошибка Firebase: слабый пароль',
+  },
+};
+
+export const resetFirebaseErrors = {
+  invalidEmail: 'Firebase: Error (auth/invalid-email)',
+  userNotFound: 'Firebase: Error (auth/user-not-found)',
+  missingEmail: 'Firebase: Error (auth/missing-email).',
+};
+
+const translatedResetFirebaseErrors = {
+  en: {
+    [resetFirebaseErrors.invalidEmail]: resetFirebaseErrors.invalidEmail,
+    [resetFirebaseErrors.userNotFound]: resetFirebaseErrors.userNotFound,
+    [resetFirebaseErrors.missingEmail]: resetFirebaseErrors.missingEmail,
+  },
+  ru: {
+    [resetFirebaseErrors.invalidEmail]: 'Ошибка Firebase: неправильный email',
+    [resetFirebaseErrors.userNotFound]:
+      'Ошибка Firebase: пользователь не существует',
+    [resetFirebaseErrors.missingEmail]: 'Ошибка Firebase: пустой email',
+  },
+};
+
 export const translations = {
   en: {
     ROUTE_PATH: {
@@ -59,6 +129,7 @@ export const translations = {
       forget: 'Forgot Password?',
       not: 'Do not have an account?',
       now: 'now.',
+      firebaseErrors: translatedSignInFirebaseErrors.en,
     },
     SIGN_UP: {
       email: 'Email',
@@ -68,6 +139,7 @@ export const translations = {
       confirm: 'Confirm password',
       strength: 'Your password strength is',
       enter: 'Enter name',
+      firebaseErrors: translatedsignUpFirebaseErrors.en,
     },
     TOKEN_TITLE: 'PIX_token',
     emptyToken: {
@@ -109,6 +181,7 @@ export const translations = {
       cancel: 'Cancel',
       reset: 'Reset',
       email: 'Email',
+      firebaseErrors: translatedResetFirebaseErrors.en,
     },
     ABOUT_PROJECT_CONTENT: {
       video:
@@ -239,6 +312,7 @@ export const translations = {
       forget: 'Забыли пароль?',
       not: 'Еще не регистрировались?',
       now: 'сейчас.',
+      firebaseErrors: translatedSignInFirebaseErrors.ru,
     },
     SIGN_UP: {
       email: 'Почта',
@@ -248,6 +322,7 @@ export const translations = {
       confirm: 'Подтвердить пароль',
       strength: 'Сила вашего пароля',
       enter: 'Введите имя',
+      firebaseErrors: translatedsignUpFirebaseErrors.ru,
     },
     TOKEN_TITLE: 'PIX_токен',
     emptyToken: {
@@ -289,6 +364,7 @@ export const translations = {
       cancel: 'Отменить',
       reset: 'Сброс',
       email: 'Почта',
+      firebaseErrors: translatedResetFirebaseErrors.ru,
     },
     ABOUT_PROJECT_CONTENT: {
       video:

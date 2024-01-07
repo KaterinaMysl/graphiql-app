@@ -8,6 +8,11 @@ import {
 } from '../../../services/firebase';
 import { translations, ROUTE_PATH } from '../../../utils/constants';
 import { SignInForm } from '../../../utils/types';
+
+import { useAppDispatch, useAppSelector } from '../../../redux/hook';
+import { RootState } from '../../../redux/store';
+import { setError } from '../../../redux/slices/authSlice';
+
 import PasswordInput from '../../../components/PasswordInput/PasswordInput';
 
 import styles from './SignIn.module.css';
@@ -15,6 +20,11 @@ import styles from './SignIn.module.css';
 const initialFormValues: SignInForm = { email: '', password: '' };
 
 const SignIn = () => {
+  const { error: signInError } = useAppSelector(
+    (state: RootState) => state.authSlice
+  );
+  const dispatch = useAppDispatch();
+
   const { lang } = useLocalization();
   const translatedConstants = translations[lang];
   const {
@@ -27,16 +37,28 @@ const SignIn = () => {
     mode: 'onChange',
   });
 
-  const onSubmitHandler: SubmitHandler<SignInForm> = ({
+  const onSubmitHandler: SubmitHandler<SignInForm> = async ({
     email,
     password,
   }: SignInForm) => {
-    sigInWithEmailAndPassword(email, password);
+    try {
+      await sigInWithEmailAndPassword(email, password);
+    } catch (err) {
+      if (err instanceof Error) {
+        dispatch(setError(err.message));
+      }
+    }
   };
 
-  const handleSignInWithGoogle = (e: FormEvent) => {
+  const handleSignInWithGoogle = async (e: FormEvent) => {
     e.preventDefault();
-    signInWithGoogle();
+    try {
+      await signInWithGoogle();
+    } catch (err) {
+      if (err instanceof Error) {
+        dispatch(setError(err.message));
+      }
+    }
   };
 
   return (
@@ -69,6 +91,7 @@ const SignIn = () => {
         </Link>{' '}
         {translatedConstants.SIGN_IN.now}
       </div>
+      <p>{translatedConstants.SIGN_IN.firebaseErrors[signInError]}</p>
     </form>
   );
 };
