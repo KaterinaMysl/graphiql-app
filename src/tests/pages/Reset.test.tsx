@@ -14,7 +14,7 @@ describe('Reset component', () => {
     expect(buttons[1].innerHTML).toBe('Reset');
   });
 
-  test('should go out from page when click Reset button', async () => {
+  test('should change email on typing', async () => {
     const mockEmail = 'some@email.com';
     renderWithProviders(<Reset />);
 
