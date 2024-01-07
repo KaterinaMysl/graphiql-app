@@ -1,0 +1,40 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #dcdcdc;
+  text-align: center;
+}
+
+.form input {
+  padding: 10px;
+  font-size: 18px;
+}
+
+.form p {
+  text-align: center;
+  font-size: 12px;
+  color: #b22121;
+  margin: 10px 0 15px;
+}
+
+.form p.strong {
+  color: rgb(1, 94, 1);
+  margin: 10px 0 0;
+}
+
+.form p.poor {
+  margin: 10px 0 0;
+}
+
+.buttons__container {
+  display: flex;
+  justify-content: center;
+  column-gap: 20px;
+}
+
+.buttons__container .reset__btn {
+  background-color: #fa9e1b;
+}

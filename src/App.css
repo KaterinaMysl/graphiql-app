@@ -1,0 +1,27 @@
+button:disabled {
+  background-color: #dcdcdc;
+  border: 1px solid #575757;
+  color: grey;
+  cursor: not-allowed;
+}
+
+html,
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}

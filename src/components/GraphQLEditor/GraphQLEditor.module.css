@@ -1,0 +1,35 @@
+.editorsContainer {
+  display: flex;
+}
+
+.queryContainer {
+  width: 48%;
+}
+
+.runBtn {
+  width: 60px;
+  height: 60px;
+  margin-top: 20px;
+  border-radius: 50%;
+}
+
+.editorsContainer button:active {
+  background-color: aquamarine;
+}
+
+.error {
+  height: 20px;
+  color: #b22121;
+}
+
+@media only screen and (width <= 600px) {
+  .editorsContainer {
+    flex-direction: column;
+  }
+  .queryContainer {
+    width: 100%;
+  }
+  .runBtn {
+    margin: 10px auto;
+  }
+}
