@@ -45,7 +45,6 @@ export default function HeaderEditor({ headers, handleHeaders }: Props) {
     return () => {
       view.destroy();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor]);
 
   return <div className={styles.editor} ref={editor}></div>;

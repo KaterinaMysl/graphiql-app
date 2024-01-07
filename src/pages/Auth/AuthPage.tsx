@@ -32,7 +32,6 @@ const AuthPage = () => {
         navigate(ROUTE_PATH.graphQl);
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, loading]);
 
   return <>{outlet}</>;

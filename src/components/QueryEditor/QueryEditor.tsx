@@ -93,7 +93,6 @@ export default function QueryEditor({ schema, handleQuery }: Props) {
     return () => {
       view.destroy();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [schema, editor]);
 
   return <div className={styles.editor} ref={editor}></div>;
