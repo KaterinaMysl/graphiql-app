@@ -68,7 +68,6 @@ const Reset = () => {
           {translatedConstants.RESET.cancel}
         </button>
         <button disabled={isValid ? false : true}>
-          {' '}
           {translatedConstants.RESET.reset}
         </button>
       </div>

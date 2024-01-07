@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { translations, ROUTE_PATH } from '../../utils/constants';
 import { useLocalization } from '../../localization/LocalizationContext';
+// eslint-disable-next-line import/no-unresolved
 import video from '../../assets/img/png/video.png';
 
 import styles from './AboutProject.module.css';
