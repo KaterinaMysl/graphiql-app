@@ -1,0 +1,15 @@
+.welcomePage {
+  padding: 20px;
+}
+
+.welcomeText {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.isTokenText {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 20px;
+}

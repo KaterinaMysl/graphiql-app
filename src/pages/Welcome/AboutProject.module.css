@@ -1,0 +1,173 @@
+.project {
+  text-align: center;
+  background: #fff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.project h2 {
+  font-weight: 600;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  width: 45%;
+  height: auto;
+  padding: 20px;
+}
+
+.text p {
+  margin-bottom: 60px;
+  line-height: 2;
+  color: #555;
+}
+
+.link {
+  position: relative;
+  margin: auto;
+  padding: 19px 22px;
+  transition: all 0.2s ease;
+}
+
+.link::before {
+  content: '';
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: block;
+
+  width: 56px;
+  height: 56px;
+
+  background: #fa9e1b;
+  border-radius: 28px;
+
+  transition: all 0.3s ease;
+}
+
+.link span {
+  position: relative;
+  color: #333;
+  font-weight: 900;
+  line-height: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  vertical-align: middle;
+}
+
+.link svg {
+  position: relative;
+  top: 0;
+  transform: translateX(-5px);
+
+  margin-left: 10px;
+
+  fill: none;
+  stroke: #111;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+
+  transition: all 0.3s ease;
+}
+
+.link:hover::before {
+  width: 100%;
+  background: #d47d02;
+}
+
+.link:hover svg {
+  transform: translateX(0);
+}
+
+.link:active {
+  transform: scale(0.96);
+}
+
+.video {
+  width: 45%;
+  padding: 20px;
+}
+
+.video > div {
+  width: 100% !important;
+  height: 400px !important;
+}
+
+.videoImg {
+  width: 100%;
+  max-width: 520px;
+}
+
+@media only screen and (width <= 980px) {
+  .container {
+    height: auto;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .text {
+    width: 90%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .text p {
+    margin-bottom: 30px;
+  }
+
+  .video {
+    width: 90%;
+  }
+}
+
+@media only screen and (width <= 520px) {
+  .container {
+    padding: 5px;
+  }
+
+  .text {
+    padding: 5px;
+  }
+
+  .video {
+    padding: 5px;
+  }
+
+  .link {
+    padding: 9px;
+  }
+
+  .link::before {
+    width: 35px;
+    height: 35px;
+    border-radius: 28px;
+  }
+
+  .video > div {
+    height: 200px !important;
+  }
+}

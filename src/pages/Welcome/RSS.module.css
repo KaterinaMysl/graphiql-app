@@ -1,0 +1,87 @@
+.container {
+  display: flex;
+  max-width: 960px;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rss {
+  padding: 20px;
+  margin: 50px 0;
+  background: #f3f6f9;
+  text-align: center;
+}
+
+.logo {
+  position: relative;
+  animation: rotateLogo 6s infinite linear;
+}
+
+.content {
+  text-align: center;
+  color: #333;
+  padding: 20px;
+}
+
+.content h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.content p {
+  font-size: 18px;
+  line-height: 2;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.rss a {
+  padding: 10px 20px;
+  background: #fa9e1b;
+  border-radius: 5px;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.rss a:hover img {
+  transform: rotate(360deg);
+}
+
+.rss img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border-style: none;
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes rotateLogo {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+  .rss {
+    padding: 20px;
+    margin: 0px;
+  }
+  .rss img {
+    width: 100px;
+    height: 100px;
+  }
+  .rss a {
+    padding: 5px 15px;
+  }
+}
