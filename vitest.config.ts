@@ -7,6 +7,7 @@ export default defineConfig({
   base: '/React-Component/',
   plugins: [tsconfigPaths(), react(), svgr()],
   envPrefix: 'PIX_',
+  assetsInclude: ['**/*.PNG', '**/*.png'],
   test: {
     coverage: {
       all: true,

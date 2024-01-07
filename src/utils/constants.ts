@@ -470,3 +470,10 @@ export const translations = {
     ],
   },
 };
+
+export const footerAltTexts = {
+  rss: 'rss logo',
+  github: 'github logo',
+};
+
+export const ErrorPageMessage = 'Error Page/ Страница с ошибкой';
