@@ -184,6 +184,7 @@ export const translations = {
       firebaseErrors: translatedResetFirebaseErrors.en,
     },
     ABOUT_PROJECT_CONTENT: {
+      graphQLLink: 'GraphQL Explained in 100 Seconds',
       video:
         'https://www.youtube.com/watch?v=eIQh02xuVw4&t=2s&ab_channel=Fireship',
       title: 'About our project',
@@ -367,6 +368,7 @@ export const translations = {
       firebaseErrors: translatedResetFirebaseErrors.ru,
     },
     ABOUT_PROJECT_CONTENT: {
+      graphQLLink: 'GraphQL за 100 секунд',
       video:
         'https://www.youtube.com/watch?v=eIQh02xuVw4&t=2s&ab_channel=Fireship',
       title: 'О нашем проекте',
