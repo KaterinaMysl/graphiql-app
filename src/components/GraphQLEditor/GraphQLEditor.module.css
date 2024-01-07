@@ -19,7 +19,7 @@
 
 .error {
   height: 20px;
-  color: red;
+  color: #b22121;
 }
 
 @media only screen and (width <= 600px) {
